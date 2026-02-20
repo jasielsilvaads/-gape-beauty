@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ágape Beauty - Cosméticos e maquiagem de luxo. Beleza que transforma, amor que inspira.">
+    <meta name="keywords" content="cosméticos, maquiagem, beleza, skincare, base, batom, sombra">
+    <title>Ágape Beauty - Cosméticos e Maquiagem</title>
+    
+    <!-- ✏️ EDITE AQUI: Favicon emoji -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>💄</text></svg>">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ✏️ EDITE AQUI: Variáveis CSS para cores e fontes */
+        :root {
+            --cor-rosa-nude: #e8a0b4;
+            --cor-rosa-escuro: #c9748f;
+            --cor-dourado: #c9a96e;
+            --cor-fundo: #fdf6f0;
+            --cor-texto: #2b1a1f;
+            --cor-branco: #ffffff;
+            --cor-cinza-claro: #f5f5f5;
+            
+            --fonte-titulo: 'Playfair Display', serif;
+            --fonte-corpo: 'Jost', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--fonte-corpo);
+            color: var(--cor-texto);
+            background-color: var(--cor-fundo);
+            overflow-x: hidden;
+        }
+
+        /* Cursor personalizado */
+        body {
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="8" fill="%23c9748f"/></svg>') 16 16, auto;
+        }
+
+        a {
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="8" fill="%23c9748f"/></svg>') 16 16, pointer;
+        }
+
+        button {
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="8" fill="%23c9748f"/></svg>') 16 16, pointer;
+        }
+
+        /* ===== ANIMAÇÕES ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Partículas decorativas */
+        .particle {
+            position: fixed;
+            pointer-events: none;
+            font-size: 2rem;
+            opacity: 0.3;
+            animation: float 6s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(253, 246, 240, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            font-family: var(--fonte-titulo);
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-parte1 {
+            color: var(--cor-rosa-escuro);
+        }
+
+        .logo-parte2 {
+            color: var(--cor-dourado);
+            font-style: italic;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--cor-texto);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--cor-rosa-escuro);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .btn-whatsapp-header {
+            background-color: var(--cor-rosa-escuro);
+            color: var(--cor-branco);
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .btn-whatsapp-header:hover {
+            background-color: var(--cor-rosa-nude);
+            transform: scale(1.05);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            margin-top: 80px;
+            min-height: 100vh;
+            background: radial-gradient(ellipse at center, rgba(232, 160, 180, 0.2) 0%, rgba(201, 116, 143, 0.1) 50%, var(--cor-fundo) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(201, 169, 110, 0.1);
+            border-radius: 50%;
+            top: 10%;
+            right: 10%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(232, 160, 180, 0.1);
+            border-radius: 50%;
+            bottom: 10%;
+            left: 5%;
+            animation: float 10s ease-in-out infinite;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 700px;
+            z-index: 10;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-family: var(--fonte-titulo);
+            font-size: 3.5rem;
+            font-style: italic;
+            color: var(--cor-rosa-escuro);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--cor-texto);
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-family: var(--fonte-corpo);
+        }
+
+        .btn-primary {
+            background-color: var(--cor-rosa-escuro);
+            color: var(--cor-branco);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--cor-rosa-nude);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(201, 116, 143, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: var(--cor-dourado);
+            color: var(--cor-branco);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--cor-rosa-escuro);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(201, 116, 143, 0.3);
+        }
+
+        /* ===== SEÇÃO PRODUTOS ===== */
+        .secao-produtos {
+            padding: 4rem 2rem;
+            background-color: var(--cor-branco);
+        }
+
+        .secao-titulo {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .secao-titulo h2 {
+            font-family: var(--fonte-titulo);
+            font-size: 2.5rem;
+            color: var(--cor-rosa-escuro);
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+
+        .secao-titulo p {
+            color: var(--cor-texto);
+            opacity: 0.7;
+            font-size: 1.1rem;
+        }
+
+        .produtos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .produto-card {
+            background-color: var(--cor-cinza-claro);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out;
+            position: relative;
+        }
+
+        .produto-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(201, 116, 143, 0.2);
+        }
+
+        .produto-imagem {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .produto-card:hover .produto-imagem {
+            transform: scale(1.1);
+        }
+
+        .produto-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--cor-dourado);
+            color: var(--cor-branco);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 10;
+        }
+
+        .produto-badge.esgotado {
+            background-color: #999;
+        }
+
+        .produto-info {
+            padding: 1.5rem;
+        }
+
+        .produto-categoria {
+            font-size: 0.85rem;
+            color: var(--cor-rosa-escuro);
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .produto-nome {
+            font-family: var(--fonte-titulo);
+            font-size: 1.3rem;
+            color: var(--cor-rosa-escuro);
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+
+        .produto-descricao {
+            font-size: 0.95rem;
+            color: var(--cor-texto);
+            opacity: 0.7;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .produto-preco {
+            font-family: var(--fonte-titulo);
+            font-size: 1.5rem;
+            color: var(--cor-dourado);
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .btn-comprar {
+            width: 100%;
+            background-color: var(--cor-rosa-escuro);
+            color: var(--cor-branco);
+            padding: 0.8rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: var(--fonte-corpo);
+        }
+
+        .btn-comprar:hover:not(:disabled) {
+            background-color: var(--cor-rosa-nude);
+            transform: translateY(-2px);
+        }
+
+        .btn-comprar:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        /* ===== SEÇÃO DIFERENCIAIS ===== */
+        .secao-diferenciais {
+            padding: 4rem 2rem;
+            background-color: var(--cor-fundo);
+        }
+
+        .diferenciais-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .diferencial-card {
+            text-align: center;
+            padding: 2rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .diferencial-icone {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .diferencial-titulo {
+            font-family: var(--fonte-titulo);
+            font-size: 1.3rem;
+            color: var(--cor-rosa-escuro);
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+
+        .diferencial-texto {
+            color: var(--cor-texto);
+            opacity: 0.7;
+            line-height: 1.6;
+        }
+
+        /* ===== SEÇÃO SOBRE ===== */
+        .secao-sobre {
+            padding: 4rem 2rem;
+            background-color: var(--cor-branco);
+        }
+
+        .sobre-container {
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .secao-sobre h2 {
+            font-family: var(--fonte-titulo);
+            font-size: 2.5rem;
+            color: var(--cor-rosa-escuro);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .secao-sobre p {
+            font-size: 1.1rem;
+            color: var(--cor-texto);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            opacity: 0.8;
+        }
+
+        /* ===== SEÇÃO CONTATO ===== */
+        .secao-contato {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(232, 160, 180, 0.1) 0%, rgba(201, 169, 110, 0.1) 100%);
+            text-align: center;
+        }
+
+        .secao-contato h2 {
+            font-family: var(--fonte-titulo);
+            font-size: 2.5rem;
+            color: var(--cor-rosa-escuro);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .secao-contato p {
+            font-size: 1.1rem;
+            color: var(--cor-texto);
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+
+        .btn-contato {
+            background-color: var(--cor-rosa-escuro);
+            color: var(--cor-branco);
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-family: var(--fonte-corpo);
+        }
+
+        .btn-contato:hover {
+            background-color: var(--cor-dourado);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(201, 116, 143, 0.3);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--cor-texto);
+            color: var(--cor-branco);
+            padding: 3rem 2rem 1rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto 2rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            font-family: var(--fonte-titulo);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--cor-rosa-nude);
+            font-style: italic;
+        }
+
+        .footer-section p {
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        .redes-sociais {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .rede-social {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--cor-rosa-escuro);
+            border-radius: 50%;
+            text-decoration: none;
+            color: var(--cor-branco);
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .rede-social:hover {
+            background-color: var(--cor-rosa-nude);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            opacity: 0.7;
+        }
+
+        /* ===== BOTÃO FLUTUANTE WHATSAPP ===== */
+        .whatsapp-flutuante {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--cor-branco);
+            font-size: 1.8rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 999;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .whatsapp-flutuante:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ===== RESPONSIVO ===== */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            nav {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                gap: 0.5rem;
+            }
+
+            .btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .produtos-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .diferenciais-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .secao-titulo h2 {
+                font-size: 2rem;
+            }
+
+            .secao-sobre h2 {
+                font-size: 2rem;
+            }
+
+            .secao-contato h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 0.8rem;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            nav {
+                gap: 0.5rem;
+                font-size: 0.85rem;
+            }
+
+            .btn-whatsapp-header {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .hero {
+                margin-top: 120px;
+                min-height: auto;
+                padding: 2rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                padding: 0.8rem 1rem;
+            }
+
+            .produtos-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .diferenciais-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .diferencial-card {
+                padding: 1.5rem;
+            }
+
+            .secao-produtos,
+            .secao-diferenciais,
+            .secao-sobre,
+            .secao-contato {
+                padding: 2rem 1rem;
+            }
+
+            .secao-titulo h2 {
+                font-size: 1.5rem;
+            }
+
+            .secao-sobre h2 {
+                font-size: 1.5rem;
+            }
+
+            .secao-contato h2 {
+                font-size: 1.5rem;
+            }
+
+            .whatsapp-flutuante {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ✏️ EDITE AQUI: Número do WhatsApp (com DDI, sem + e sem espaços) -->
+    <script>
+        const WHATSAPP = "5511999999999";
+        
+        // ✏️ EDITE AQUI: Array de produtos - para adicionar novo produto, copie um objeto e edite os campos
+        const produtos = [
+            {
+                id: 1,
+                nome: "Base Líquida Matte",
+                categoria: "Maquiagem",
+                descricao: "Cobertura total com acabamento matte. Dura até 24h.",
+                preco: "R$ 89,90",
+                imagem: "images/base.jpg",
+                emEstoque: true
+            },
+            {
+                id: 2,
+                nome: "Batom Veludo Rosa",
+                categoria: "Lábios",
+                descricao: "Tom rosé perfeito para o dia a dia. Ultra hidratante.",
+                preco: "R$ 49,90",
+                imagem: "images/batom.webp",
+                emEstoque: true
+            },
+            {
+                id: 3,
+                nome: "Sérum Vitamina C",
+                categoria: "Skincare",
+                descricao: "Ilumina, uniformiza e protege a pele.",
+                preco: "R$ 129,90",
+                imagem: "images/serum.jpg",
+                emEstoque: true
+            },
+            {
+                id: 4,
+                nome: "Paleta de Sombras Rosê",
+                categoria: "Olhos",
+                descricao: "12 tons entre matte e shimmer para looks deslumbrantes.",
+                preco: "R$ 159,90",
+                imagem: "images/paleta.jpg",
+                emEstoque: false
+            }
+        ];
+
+        // Função para criar partículas decorativas
+        function criarParticulas() {
+            const emojis = ['✦', '✿', '✧', '✨'];
+            const container = document.body;
+            
+            for (let i = 0; i < 15; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 2 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // Função para renderizar produtos
+        function renderizarProdutos() {
+            const grid = document.getElementById('produtos-grid');
+            grid.innerHTML = '';
+            
+            produtos.forEach((produto, index) => {
+                const card = document.createElement('div');
+                card.className = 'produto-card';
+                card.style.animationDelay = (index * 0.1) + 's';
+                
+                const badge = produto.emEstoque 
+                    ? `<span class="produto-badge">${produto.categoria}</span>`
+                    : `<span class="produto-badge esgotado">Esgotado</span>`;
+                
+                const urlWhatsApp = `https://wa.me/${WHATSAPP}?text=Olá! Tenho interesse no produto: *${produto.nome}* - ${produto.preco}. Ainda está disponível?`;
+                
+                const botaoTexto = produto.emEstoque ? 'Comprar via WhatsApp' : 'Indisponível';
+                
+                card.innerHTML = `
+                    <img src="${produto.imagem}" alt="${produto.nome}" class="produto-imagem">
+                    ${badge}
+                    <div class="produto-info">
+                        <div class="produto-categoria">${produto.categoria}</div>
+                        <h3 class="produto-nome">${produto.nome}</h3>
+                        <p class="produto-descricao">${produto.descricao}</p>
+                        <div class="produto-preco">${produto.preco}</div>
+                        <a href="${urlWhatsApp}" target="_blank" class="btn-comprar" ${!produto.emEstoque ? 'disabled' : ''}>${botaoTexto}</a>
+                    </div>
+                `;
+                
+                grid.appendChild(card);
+            });
+        }
+
+        // Função para abrir WhatsApp
+        function abrirWhatsApp() {
+            const mensagem = "Olá! Vim pelo site da Ágape Beauty e gostaria de mais informações.";
+            const url = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(mensagem)}`;
+            window.open(url, '_blank');
+        }
+
+        // Inicializar ao carregar a página
+        document.addEventListener('DOMContentLoaded', function() {
+            criarParticulas();
+            renderizarProdutos();
+            
+            // Scroll suave para links de navegação
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!-- ===== HEADER ===== -->
+    <header id="inicio">
+        <div class="logo">
+            <span class="logo-parte1">Ágape</span>
+            <span class="logo-parte2">Beauty</span>
+        </div>
+        <nav>
+            <a href="#inicio">Início</a>
+            <a href="#produtos">Produtos</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#contato">Contato</a>
+            <a href="javascript:void(0);" class="btn-whatsapp-header" onclick="abrirWhatsApp()">💬 WhatsApp</a>
+        </nav>
+    </header>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Beleza que transforma, amor que inspira</h1>
+            <p>Descubra nossa coleção exclusiva de cosméticos e maquiagem de luxo</p>
+            <div class="hero-buttons">
+                <a href="#produtos" class="btn btn-primary">Ver Coleção</a>
+                <button class="btn btn-secondary" onclick="abrirWhatsApp()">Falar no WhatsApp</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SEÇÃO PRODUTOS ===== -->
+    <section class="secao-produtos" id="produtos">
+        <div class="secao-titulo">
+            <h2>Nossos Produtos</h2>
+            <p>Seleção cuidadosa de cosméticos premium para sua beleza</p>
+        </div>
+        <div class="produtos-grid" id="produtos-grid">
+            <!-- Produtos renderizados por JavaScript -->
+        </div>
+    </section>
+
+    <!-- ===== SEÇÃO DIFERENCIAIS ===== -->
+    <section class="secao-diferenciais">
+        <div class="diferenciais-grid">
+            <div class="diferencial-card">
+                <div class="diferencial-icone">✓</div>
+                <h3 class="diferencial-titulo">Produtos Originais</h3>
+                <p class="diferencial-texto">Garantia de autenticidade em todos os nossos produtos. Qualidade premium garantida.</p>
+            </div>
+            <div class="diferencial-card">
+                <div class="diferencial-icone">🚚</div>
+                <h3 class="diferencial-titulo">Entrega Rápida</h3>
+                <p class="diferencial-texto">Enviamos com rapidez e segurança para todo o Brasil. Embalagem cuidadosa.</p>
+            </div>
+            <div class="diferencial-card">
+                <div class="diferencial-icone">💝</div>
+                <h3 class="diferencial-titulo">Atendimento Personalizado</h3>
+                <p class="diferencial-texto">Equipe dedicada para ajudar você a encontrar o produto perfeito.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SEÇÃO SOBRE ===== -->
+    <section class="secao-sobre" id="sobre">
+        <div class="sobre-container">
+            <h2>Sobre a Ágape Beauty</h2>
+            <p>
+                A Ágape Beauty nasceu da paixão por beleza e do desejo de transformar vidas através de cosméticos de qualidade premium. 
+                Acreditamos que a verdadeira beleza vem de dentro para fora, e nossos produtos são cuidadosamente selecionados para 
+                potencializar sua autoconfiança e bem-estar.
+            </p>
+            <p>
+                Com uma abordagem boutique e personalizada, oferecemos uma experiência de compra única, onde cada cliente é tratado 
+                com carinho e atenção especial. Nossa missão é inspirar e empoderar mulheres através de produtos inovadores, 
+                sustentáveis e que realmente funcionam.
+            </p>
+            <p>
+                Cada produto em nosso catálogo passou por rigoroso controle de qualidade. Trabalhamos apenas com marcas confiáveis 
+                e fornecedores verificados, garantindo que você receba o melhor do melhor.
+            </p>
+        </div>
+    </section>
+
+    <!-- ===== SEÇÃO CONTATO ===== -->
+    <section class="secao-contato" id="contato">
+        <h2>Vamos Conversar?</h2>
+        <p>Tem dúvidas ou quer conhecer melhor nossos produtos? Entre em contato conosco!</p>
+        <button class="btn-contato" onclick="abrirWhatsApp()">💬 Falar no WhatsApp</button>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Ágape Beauty</h3>
+                <p>Beleza que transforma, amor que inspira. Sua boutique de cosméticos premium online.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Redes Sociais</h3>
+                <div class="redes-sociais">
+                    <!-- ✏️ EDITE AQUI: Adicione links das suas redes sociais -->
+                    <a href="https://instagram.com" target="_blank" class="rede-social">📷</a>
+                    <a href="https://facebook.com" target="_blank" class="rede-social">f</a>
+                    <a href="https://tiktok.com" target="_blank" class="rede-social">♪</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <p>WhatsApp: <strong>+55 11 99999-9999</strong></p>
+                <p>Email: <strong>contato@agapebeauty.com</strong></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Ágape Beauty. Todos os direitos reservados. | Desenvolvido com 💖</p>
+        </div>
+    </footer>
+
+    <!-- ===== BOTÃO FLUTUANTE WHATSAPP ===== -->
+    <a href="javascript:void(0);" class="whatsapp-flutuante" onclick="abrirWhatsApp()" title="Falar no WhatsApp">
+        💬
+    </a>
+</body>
+</html>
