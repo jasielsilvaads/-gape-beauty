@@ -96,38 +96,38 @@
         .btn-secondary:hover { background-color: var(--cor-rosa-escuro); transform: translateY(-3px); }
 
         /* ===== PRODUTOS ===== */
-        .secao-produtos { padding: 4rem 2rem; background-color: var(--cor-branco); }
+        .secao-produtos { padding: 2rem 1rem; background-color: var(--cor-branco); }
         .secao-titulo { text-align: center; margin-bottom: 3rem; }
         .secao-titulo h2 { font-family: var(--fonte-titulo); font-size: 2.5rem; color: var(--cor-rosa-escuro); margin-bottom: 0.5rem; font-style: italic; }
         .secao-titulo p { color: var(--cor-texto); opacity: 0.7; font-size: 1.1rem; }
-        .produtos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1200px; margin: 0 auto; }
+        .produtos-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.8rem; max-width: 1600px; margin: 0 auto; }
         .produto-card { background-color: var(--cor-cinza-claro); border-radius: 15px; overflow: hidden; transition: all 0.3s; position: relative; display: flex; flex-direction: column; }
         .produto-card:hover { transform: scale(1.03); box-shadow: 0 15px 40px rgba(201,116,143,0.2); }
-        .produto-imagem { width: 100%; height: 250px; object-fit: cover; object-position: center; display: block; }
-        .produto-badge { position: absolute; top: 15px; right: 15px; background-color: var(--cor-dourado); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; z-index: 10; }
+        .produto-imagem { width: 100%; height: 130px; object-fit: cover; object-position: center; display: block; }
+        .produto-badge { position: absolute; top: 8px; right: 8px; background-color: var(--cor-dourado); color: white; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.65rem; font-weight: 600; z-index: 10; }
         .produto-badge.esgotado { background-color: #999; }
-        .produto-info { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
-        .produto-categoria { font-size: 0.85rem; color: var(--cor-rosa-escuro); font-weight: 600; text-transform: uppercase; margin-bottom: 0.5rem; }
-        .produto-nome { font-family: var(--fonte-titulo); font-size: 1.3rem; color: var(--cor-rosa-escuro); margin-bottom: 0.5rem; font-style: italic; }
-        .produto-descricao { font-size: 0.95rem; color: var(--cor-texto); opacity: 0.7; margin-bottom: 1rem; line-height: 1.4; flex: 1; }
-        .produto-preco { font-family: var(--fonte-titulo); font-size: 1.5rem; color: var(--cor-dourado); font-weight: bold; margin-bottom: 1rem; }
+        .produto-info { padding: 0.65rem; flex: 1; display: flex; flex-direction: column; }
+        .produto-categoria { font-size: 0.65rem; color: var(--cor-rosa-escuro); font-weight: 600; text-transform: uppercase; margin-bottom: 0.2rem; }
+        .produto-nome { font-family: var(--fonte-titulo); font-size: 0.95rem; color: var(--cor-rosa-escuro); margin-bottom: 0.2rem; font-style: italic; line-height: 1.2; }
+        .produto-descricao { font-size: 0.72rem; color: var(--cor-texto); opacity: 0.7; margin-bottom: 0.4rem; line-height: 1.25; flex: 1; }
+        .produto-preco { font-family: var(--fonte-titulo); font-size: 1rem; color: var(--cor-dourado); font-weight: bold; margin-bottom: 0.4rem; }
         
-        .produto-quantidade { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; }
+        .produto-quantidade { display: flex; align-items: center; gap: 0.3rem; margin-bottom: 0.3rem; }
         .produto-quantidade label { font-size: 0.9rem; color: var(--cor-texto); opacity: 0.7; }
         .input-quantidade {
-            width: 70px; padding: 0.4rem 0.6rem;
+            width: 55px; padding: 0.25rem 0.4rem;
             border: 2px solid var(--cor-rosa-nude);
-            border-radius: 8px; font-family: var(--fonte-corpo);
-            font-size: 0.95rem; text-align: center;
+            border-radius: 6px; font-family: var(--fonte-corpo);
+            font-size: 0.8rem; text-align: center;
             color: var(--cor-texto);
         }
         .input-quantidade:focus { outline: none; border-color: var(--cor-rosa-escuro); }
 
         .btn-comprar {
             width: 100%; background-color: var(--cor-rosa-escuro); color: white;
-            padding: 0.8rem; border: none; border-radius: 8px;
+            padding: 0.5rem; border: none; border-radius: 6px;
             font-weight: 600; transition: all 0.3s; font-family: var(--fonte-corpo);
-            font-size: 0.95rem;
+            font-size: 0.8rem;
         }
         .btn-comprar:hover:not(:disabled) { background-color: var(--cor-rosa-nude); transform: translateY(-2px); }
         .btn-comprar:disabled { background-color: #ccc; cursor: not-allowed; opacity: 0.6; }
@@ -355,7 +355,7 @@
             header { flex-direction: column; gap: 1rem; padding: 1rem; }
             nav { gap: 1rem; flex-wrap: wrap; justify-content: center; }
             .hero h1 { font-size: 2.2rem; }
-            .produtos-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+            .produtos-grid { grid-template-columns: repeat(3, 1fr); gap: 0.6rem; }
             .diferenciais-grid { grid-template-columns: repeat(2, 1fr); }
             .footer-content { grid-template-columns: 1fr; gap: 1.5rem; }
             .carrinho-lateral { width: 100vw; }
@@ -368,7 +368,7 @@
             .hero h1 { font-size: 1.8rem; }
             .hero-buttons { flex-direction: column; }
             .btn { width: 100%; padding: 0.8rem 1rem; }
-            .produtos-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .produtos-grid { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
             .diferenciais-grid { grid-template-columns: 1fr; }
             .secao-produtos, .secao-diferenciais, .secao-sobre, .secao-contato { padding: 2rem 1rem; }
             .whatsapp-flutuante { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 1.5rem; }
@@ -382,12 +382,510 @@
         const WHATSAPP = "5585998474074";
 
         // ✏️ EDITE: Produtos
+        // ============================================================
+        // ✏️ COMO EDITAR SEUS PRODUTOS:
+        //
+        //  id        → número único para cada produto (não repita!)
+        //  nome      → nome do produto que aparece no card
+        //  categoria → ex: "Maquiagem", "Skincare", "Lábios", "Olhos",
+        //              "Unhas", "Perfume", "Cabelo", "Corpo"
+        //  descricao → frase curta (máx. 2 linhas) sobre o produto
+        //  preco     → valor NUMÉRICO, sem R$ (ex: 49.90)
+        //  imagem    → caminho da foto (salve na pasta images/)
+        //              Ex: "images/nome-do-arquivo.jpg"
+        //  emEstoque → true  = produto disponível para venda
+        //              false = aparece como "Esgotado"
+        //
+        //  Para ADICIONAR produto: copie um bloco { ... }, e edite
+        //  Para REMOVER produto:   apague o bloco { ... } inteiro
+        //  Lembre de separar os produtos com vírgula!
+        // ============================================================
         const produtos = [
-            { id: 1, nome: "Base Líquida Matte", categoria: "Maquiagem", descricao: "Cobertura total com acabamento matte. Dura até 24h.", preco: 89.90, imagem: "images/base-liquida.webp", emEstoque: true },
-            { id: 2, nome: "Batom Veludo Rosa", categoria: "Lábios", descricao: "Tom rosé perfeito para o dia a dia. Ultra hidratante.", preco: 49.90, imagem: "images/batom.webp", emEstoque: true },
-            { id: 3, nome: "Sérum Vitamina C", categoria: "Skincare", descricao: "Ilumina, uniformiza e protege a pele.", preco: 129.90, imagem: "images/serum.jpg", emEstoque: true },
-            { id: 4, nome: "Paleta de Sombras Rosê", categoria: "Olhos", descricao: "12 tons entre matte e shimmer para looks deslumbrantes.", preco: 159.90, imagem: "images/paleta.jpg", emEstoque: false },
-            { id: 5, nome: "Base Líquida Natural", categoria: "Facial", descricao: "Base líquida para sua maquiagem ficar perfeita.", preco: 10.00, imagem: "images/base-lq.jpg", emEstoque: true },
+
+            // ── MAQUIAGEM ─────────────────────────────────────────
+            {
+                id: 1,
+                nome: "Base Líquida Matte 24h",
+                categoria: "Maquiagem",
+                descricao: "Cobertura total, acabamento matte, dura o dia todo.",
+                preco: 89.90,
+                imagem: "images/base-liquida.webp",
+                emEstoque: true
+            },
+            {
+                id: 2,
+                nome: "Base Líquida Natural",
+                categoria: "Maquiagem",
+                descricao: "Cobertura leve com efeito pele natural e luminoso.",
+                preco: 79.90,
+                imagem: "images/base-natural.jpg",
+                emEstoque: true
+            },
+            {
+                id: 3,
+                nome: "Corretivo Líquido",
+                categoria: "Maquiagem",
+                descricao: "Cobre olheiras e imperfeições com longa duração.",
+                preco: 39.90,
+                imagem: "images/corretivo.jpg",
+                emEstoque: true
+            },
+            {
+                id: 4,
+                nome: "Pó Compacto Matte",
+                categoria: "Maquiagem",
+                descricao: "Fixa a maquiagem e controla brilho por horas.",
+                preco: 54.90,
+                imagem: "images/po-compacto.jpg",
+                emEstoque: true
+            },
+            {
+                id: 5,
+                nome: "Blush Rosado",
+                categoria: "Maquiagem",
+                descricao: "Dá cor e vida ao rosto com pigmentação intensa.",
+                preco: 44.90,
+                imagem: "images/blush.jpg",
+                emEstoque: true
+            },
+            {
+                id: 6,
+                nome: "Contorno e Iluminador",
+                categoria: "Maquiagem",
+                descricao: "Kit 2 em 1 para modelar e destacar as feições.",
+                preco: 69.90,
+                imagem: "images/contorno.jpg",
+                emEstoque: true
+            },
+            {
+                id: 7,
+                nome: "Primer Facial",
+                categoria: "Maquiagem",
+                descricao: "Prepara a pele e aumenta a duração da maquiagem.",
+                preco: 59.90,
+                imagem: "images/primer.jpg",
+                emEstoque: true
+            },
+            {
+                id: 8,
+                nome: "Setting Spray Fixador",
+                categoria: "Maquiagem",
+                descricao: "Fixa a make por até 16h com efeito fresco.",
+                preco: 49.90,
+                imagem: "images/setting-spray.jpg",
+                emEstoque: true
+            },
+
+            // ── LÁBIOS ────────────────────────────────────────────
+            {
+                id: 9,
+                nome: "Batom Veludo Rosê",
+                categoria: "Lábios",
+                descricao: "Tom rosé perfeito, textura veludo, ultra hidratante.",
+                preco: 34.90,
+                imagem: "images/batom.webp",
+                emEstoque: true
+            },
+            {
+                id: 10,
+                nome: "Batom Líquido Vermelho",
+                categoria: "Lábios",
+                descricao: "Vermelho clássico, longa duração, não resseca.",
+                preco: 38.90,
+                imagem: "images/batom-vermelho.jpg",
+                emEstoque: true
+            },
+            {
+                id: 11,
+                nome: "Gloss Labial Nude",
+                categoria: "Lábios",
+                descricao: "Brilho volumoso com efeito plump e hidratação.",
+                preco: 29.90,
+                imagem: "images/gloss.jpg",
+                emEstoque: true
+            },
+            {
+                id: 12,
+                nome: "Lip Liner Contorno",
+                categoria: "Lábios",
+                descricao: "Define e contorna os lábios com precisão.",
+                preco: 24.90,
+                imagem: "images/lip-liner.jpg",
+                emEstoque: true
+            },
+            {
+                id: 13,
+                nome: "Batom Nude Matte",
+                categoria: "Lábios",
+                descricao: "Tom nude sofisticado para o dia a dia.",
+                preco: 34.90,
+                imagem: "images/batom-nude.jpg",
+                emEstoque: true
+            },
+
+            // ── OLHOS ─────────────────────────────────────────────
+            {
+                id: 14,
+                nome: "Paleta de Sombras Rosê",
+                categoria: "Olhos",
+                descricao: "12 tons matte e shimmer para looks deslumbrantes.",
+                preco: 159.90,
+                imagem: "images/paleta.jpg",
+                emEstoque: true
+            },
+            {
+                id: 15,
+                nome: "Paleta Nude & Brown",
+                categoria: "Olhos",
+                descricao: "16 tons terrosos versáteis para qualquer look.",
+                preco: 179.90,
+                imagem: "images/paleta-nude.jpg",
+                emEstoque: true
+            },
+            {
+                id: 16,
+                nome: "Máscara de Cílios Volume",
+                categoria: "Olhos",
+                descricao: "Máximo volume e curvatura sem grudar os cílios.",
+                preco: 49.90,
+                imagem: "images/mascara-cilios.jpg",
+                emEstoque: true
+            },
+            {
+                id: 17,
+                nome: "Delineador Líquido Preto",
+                categoria: "Olhos",
+                descricao: "Traço preciso e intenso, resistente à água.",
+                preco: 39.90,
+                imagem: "images/delineador.jpg",
+                emEstoque: true
+            },
+            {
+                id: 18,
+                nome: "Lápis de Olho Kajal",
+                categoria: "Olhos",
+                descricao: "Define o olhar com cor intensa e fácil aplicação.",
+                preco: 22.90,
+                imagem: "images/lapis-olho.jpg",
+                emEstoque: true
+            },
+            {
+                id: 19,
+                nome: "Sombra Glitter Ouro",
+                categoria: "Olhos",
+                descricao: "Pigmento glitter dourado para looks de festa.",
+                preco: 32.90,
+                imagem: "images/glitter-ouro.jpg",
+                emEstoque: true
+            },
+            {
+                id: 20,
+                nome: "Cílios Postiços Naturais",
+                categoria: "Olhos",
+                descricao: "Cílios reutilizáveis para efeito natural e delicado.",
+                preco: 19.90,
+                imagem: "images/cilios.jpg",
+                emEstoque: false
+            },
+
+            // ── SKINCARE ──────────────────────────────────────────
+            {
+                id: 21,
+                nome: "Sérum Vitamina C 20%",
+                categoria: "Skincare",
+                descricao: "Ilumina, uniformiza e protege a pele. 30ml.",
+                preco: 129.90,
+                imagem: "images/serum.jpg",
+                emEstoque: true
+            },
+            {
+                id: 22,
+                nome: "Hidratante Facial FPS 50",
+                categoria: "Skincare",
+                descricao: "Hidrata e protege do sol em um único produto.",
+                preco: 89.90,
+                imagem: "images/hidratante-fps.jpg",
+                emEstoque: true
+            },
+            {
+                id: 23,
+                nome: "Ácido Hialurônico Sérum",
+                categoria: "Skincare",
+                descricao: "Hidratação profunda, reduz linhas de expressão.",
+                preco: 119.90,
+                imagem: "images/ac-hialuronico.jpg",
+                emEstoque: true
+            },
+            {
+                id: 24,
+                nome: "Tônico Facial Calmante",
+                categoria: "Skincare",
+                descricao: "Equilibra o pH e prepara a pele para os próximos passos.",
+                preco: 59.90,
+                imagem: "images/tonico.jpg",
+                emEstoque: true
+            },
+            {
+                id: 25,
+                nome: "Máscara Facial Argila",
+                categoria: "Skincare",
+                descricao: "Desobstrui os poros e controla a oleosidade.",
+                preco: 49.90,
+                imagem: "images/mascara-argila.jpg",
+                emEstoque: true
+            },
+            {
+                id: 26,
+                nome: "Esfoliante Facial Suave",
+                categoria: "Skincare",
+                descricao: "Remove células mortas e renova o viço da pele.",
+                preco: 44.90,
+                imagem: "images/esfoliante.jpg",
+                emEstoque: true
+            },
+            {
+                id: 27,
+                nome: "Óleo Facial de Rosa",
+                categoria: "Skincare",
+                descricao: "Nutre, repara e deixa a pele com brilho saudável.",
+                preco: 99.90,
+                imagem: "images/oleo-rosa.jpg",
+                emEstoque: true
+            },
+            {
+                id: 28,
+                nome: "Retinol Noturno Sérum",
+                categoria: "Skincare",
+                descricao: "Renova a pele durante a noite, anti-aging.",
+                preco: 149.90,
+                imagem: "images/retinol.jpg",
+                emEstoque: false
+            },
+            {
+                id: 29,
+                nome: "Protetor Solar Facial",
+                categoria: "Skincare",
+                descricao: "FPS 60, toque seco, sem deixar marca branca.",
+                preco: 79.90,
+                imagem: "images/protetor-solar.jpg",
+                emEstoque: true
+            },
+            {
+                id: 30,
+                nome: "Demaquilante Bifásico",
+                categoria: "Skincare",
+                descricao: "Remove até maquiagem à prova d'água suavemente.",
+                preco: 39.90,
+                imagem: "images/demaquilante.jpg",
+                emEstoque: true
+            },
+
+            // ── UNHAS ─────────────────────────────────────────────
+            {
+                id: 31,
+                nome: "Esmalte Rosê Nude",
+                categoria: "Unhas",
+                descricao: "Tom rosé delicado, secagem rápida e longa duração.",
+                preco: 14.90,
+                imagem: "images/esmalte-rose.jpg",
+                emEstoque: true
+            },
+            {
+                id: 32,
+                nome: "Esmalte Vermelho Clássico",
+                categoria: "Unhas",
+                descricao: "Vermelho intenso, cobertura total em 1 demão.",
+                preco: 14.90,
+                imagem: "images/esmalte-vermelho.jpg",
+                emEstoque: true
+            },
+            {
+                id: 33,
+                nome: "Base e Top Coat Kit",
+                categoria: "Unhas",
+                descricao: "Prepara e sela o esmalte, dura até 2 semanas.",
+                preco: 29.90,
+                imagem: "images/base-top-coat.jpg",
+                emEstoque: true
+            },
+            {
+                id: 34,
+                nome: "Esmalte Glitter Rosa",
+                categoria: "Unhas",
+                descricao: "Glitter rosado para um acabamento festivo e glamouroso.",
+                preco: 17.90,
+                imagem: "images/esmalte-glitter.jpg",
+                emEstoque: true
+            },
+            {
+                id: 35,
+                nome: "Cutícula Removedora",
+                categoria: "Unhas",
+                descricao: "Remove cutículas com facilidade, sem dor.",
+                preco: 19.90,
+                imagem: "images/cuticula.jpg",
+                emEstoque: true
+            },
+
+            // ── PERFUMES ──────────────────────────────────────────
+            {
+                id: 36,
+                nome: "Deo Parfum Floral 75ml",
+                categoria: "Perfume",
+                descricao: "Fragrância floral elegante, longa fixação.",
+                preco: 189.90,
+                imagem: "images/perfume-floral.jpg",
+                emEstoque: true
+            },
+            {
+                id: 37,
+                nome: "Body Splash Rosê 200ml",
+                categoria: "Perfume",
+                descricao: "Leve e refrescante, ideal para o dia a dia.",
+                preco: 59.90,
+                imagem: "images/body-splash.jpg",
+                emEstoque: true
+            },
+            {
+                id: 38,
+                nome: "Deo Parfum Amadeirado",
+                categoria: "Perfume",
+                descricao: "Notas amadeiradas e sensuais para a noite.",
+                preco: 219.90,
+                imagem: "images/perfume-amadeirado.jpg",
+                emEstoque: true
+            },
+            {
+                id: 39,
+                nome: "Colônia Cítrica 100ml",
+                categoria: "Perfume",
+                descricao: "Fresca e energizante, perfeita para o verão.",
+                preco: 89.90,
+                imagem: "images/colonia.jpg",
+                emEstoque: false
+            },
+
+            // ── CABELO ────────────────────────────────────────────
+            {
+                id: 40,
+                nome: "Óleo Capilar Argan",
+                categoria: "Cabelo",
+                descricao: "Nutre, controla o frizz e dá brilho intenso.",
+                preco: 69.90,
+                imagem: "images/oleo-argan.jpg",
+                emEstoque: true
+            },
+            {
+                id: 41,
+                nome: "Máscara Hidratação Intensa",
+                categoria: "Cabelo",
+                descricao: "Recupera cabelos danificados em 10 minutos.",
+                preco: 54.90,
+                imagem: "images/mascara-cabelo.jpg",
+                emEstoque: true
+            },
+            {
+                id: 42,
+                nome: "Shampoo Nutritivo",
+                categoria: "Cabelo",
+                descricao: "Limpa sem agredir, com fórmula nutritiva suave.",
+                preco: 44.90,
+                imagem: "images/shampoo.jpg",
+                emEstoque: true
+            },
+            {
+                id: 43,
+                nome: "Leave-in Protetor Térmico",
+                categoria: "Cabelo",
+                descricao: "Protege até 230°C, reduz quebra e facilita a escova.",
+                preco: 49.90,
+                imagem: "images/leave-in.jpg",
+                emEstoque: true
+            },
+            {
+                id: 44,
+                nome: "Condicionador Intensivo",
+                categoria: "Cabelo",
+                descricao: "Desembaraça e hidrata do comprimento às pontas.",
+                preco: 44.90,
+                imagem: "images/condicionador.jpg",
+                emEstoque: true
+            },
+
+            // ── CORPO ─────────────────────────────────────────────
+            {
+                id: 45,
+                nome: "Hidratante Corporal Rosa",
+                categoria: "Corpo",
+                descricao: "Pele macia e perfumada por até 24h.",
+                preco: 59.90,
+                imagem: "images/hidratante-corpo.jpg",
+                emEstoque: true
+            },
+            {
+                id: 46,
+                nome: "Esfoliante Corporal Café",
+                categoria: "Corpo",
+                descricao: "Elimina células mortas e reduz aparência da celulite.",
+                preco: 49.90,
+                imagem: "images/esfoliante-corpo.jpg",
+                emEstoque: true
+            },
+            {
+                id: 47,
+                nome: "Óleo Corporal Brilhante",
+                categoria: "Corpo",
+                descricao: "Ilumina a pele com brilho dourado suave e irresistível.",
+                preco: 79.90,
+                imagem: "images/oleo-corporal.jpg",
+                emEstoque: true
+            },
+            {
+                id: 48,
+                nome: "Sabonete Líquido Floral",
+                categoria: "Corpo",
+                descricao: "Limpeza suave com aroma floral delicado.",
+                preco: 29.90,
+                imagem: "images/sabonete.jpg",
+                emEstoque: true
+            },
+            {
+                id: 49,
+                nome: "Kit Banho Relaxante",
+                categoria: "Corpo",
+                descricao: "Sal de banho + hidratante + esponja vegetal.",
+                preco: 99.90,
+                imagem: "images/kit-banho.jpg",
+                emEstoque: true
+            },
+            {
+                id: 50,
+                nome: "Creme para Mãos e Unhas",
+                categoria: "Corpo",
+                descricao: "Hidrata profundamente mãos ressecadas e cutículas.",
+                preco: 24.90,
+                imagem: "images/creme-maos.jpg",
+                emEstoque: true
+            },
+            {
+                id: 51,
+                nome: "Manteiga Corporal Cacau",
+                categoria: "Corpo",
+                descricao: "Nutritiva e perfumada, ideal para pele seca.",
+                preco: 54.90,
+                imagem: "images/manteiga-cacau.jpg",
+                emEstoque: true
+            },
+            {
+                id: 52,
+                nome: "Desodorante Stick Floral",
+                categoria: "Corpo",
+                descricao: "Proteção 48h sem álcool, sem irritar a pele.",
+                preco: 22.90,
+                imagem: "images/desodorante.jpg",
+                emEstoque: true
+            },
+
         ];
 
         // Estado do carrinho
