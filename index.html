@@ -4,19 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Ágape Beauty - Cosméticos e maquiagem de luxo. Beleza que transforma, amor que inspira.">
-    <meta name="keywords" content="cosméticos, maquiagem, beleza, skincare, base, batom, sombra">
     <title>Ágape Beauty - Cosméticos e Maquiagem</title>
-    
-    <!-- ✏️ EDITE AQUI: Favicon emoji -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>💄</text></svg>">
-    
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* ✏️ EDITE AQUI: Variáveis CSS para cores e fontes */
         :root {
             --cor-rosa-nude: #e8a0b4;
             --cor-rosa-escuro: #c9748f;
@@ -25,916 +19,745 @@
             --cor-texto: #2b1a1f;
             --cor-branco: #ffffff;
             --cor-cinza-claro: #f5f5f5;
-            
             --fonte-titulo: 'Playfair Display', serif;
             --fonte-corpo: 'Jost', sans-serif;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--fonte-corpo); color: var(--cor-texto); background-color: var(--cor-fundo); overflow-x: hidden; }
+        body { cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="8" fill="%23c9748f"/></svg>') 16 16, auto; }
+        a, button { cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="8" fill="%23c9748f"/></svg>') 16 16, pointer; }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+        @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
 
-        body {
-            font-family: var(--fonte-corpo);
-            color: var(--cor-texto);
-            background-color: var(--cor-fundo);
-            overflow-x: hidden;
-        }
-
-        /* Cursor personalizado */
-        body {
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="8" fill="%23c9748f"/></svg>') 16 16, auto;
-        }
-
-        a {
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="8" fill="%23c9748f"/></svg>') 16 16, pointer;
-        }
-
-        button {
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="8" fill="%23c9748f"/></svg>') 16 16, pointer;
-        }
-
-        /* ===== ANIMAÇÕES ===== */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                opacity: 0.5;
-            }
-            50% {
-                opacity: 1;
-            }
-        }
-
-        @keyframes rotate {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* Partículas decorativas */
-        .particle {
-            position: fixed;
-            pointer-events: none;
-            font-size: 2rem;
-            opacity: 0.3;
-            animation: float 6s ease-in-out infinite;
-            z-index: 1;
-        }
+        .particle { position: fixed; pointer-events: none; font-size: 2rem; opacity: 0.3; animation: float 6s ease-in-out infinite; z-index: 1; }
 
         /* ===== HEADER ===== */
         header {
-            position: fixed;
-            top: 0;
-            width: 100%;
+            position: fixed; top: 0; width: 100%;
             background-color: rgba(253, 246, 240, 0.95);
             backdrop-filter: blur(10px);
             padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            display: flex; justify-content: space-between; align-items: center;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
+        .logo { font-family: var(--fonte-titulo); font-size: 1.8rem; font-weight: bold; display: flex; align-items: center; gap: 0.5rem; }
+        .logo-parte1 { color: var(--cor-rosa-escuro); }
+        .logo-parte2 { color: var(--cor-dourado); font-style: italic; }
+        nav { display: flex; gap: 2rem; align-items: center; }
+        nav a { text-decoration: none; color: var(--cor-texto); font-weight: 500; transition: color 0.3s; position: relative; }
+        nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background-color: var(--cor-rosa-escuro); transition: width 0.3s; }
+        nav a:hover::after { width: 100%; }
 
-        .logo {
-            font-family: var(--fonte-titulo);
-            font-size: 1.8rem;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .logo-parte1 {
-            color: var(--cor-rosa-escuro);
-        }
-
-        .logo-parte2 {
-            color: var(--cor-dourado);
-            font-style: italic;
-        }
-
-        nav {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--cor-texto);
-            font-weight: 500;
-            transition: color 0.3s ease;
+        .btn-carrinho-header {
             position: relative;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--cor-rosa-escuro);
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        .btn-whatsapp-header {
             background-color: var(--cor-rosa-escuro);
             color: var(--cor-branco);
             padding: 0.7rem 1.5rem;
-            border: none;
-            border-radius: 25px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.9rem;
+            border: none; border-radius: 25px;
+            font-weight: 600; font-size: 0.9rem;
+            transition: all 0.3s;
+            display: inline-flex; align-items: center; gap: 0.5rem;
+        }
+        .btn-carrinho-header:hover { background-color: var(--cor-rosa-nude); transform: scale(1.05); }
+        .badge-carrinho {
+            position: absolute; top: -8px; right: -8px;
+            background-color: var(--cor-dourado);
+            color: white; border-radius: 50%;
+            width: 22px; height: 22px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.75rem; font-weight: 700;
+            display: none;
         }
 
-        .btn-whatsapp-header:hover {
-            background-color: var(--cor-rosa-nude);
-            transform: scale(1.05);
-        }
-
-        /* ===== HERO SECTION ===== */
+        /* ===== HERO ===== */
         .hero {
-            margin-top: 80px;
-            min-height: 100vh;
-            background: radial-gradient(ellipse at center, rgba(232, 160, 180, 0.2) 0%, rgba(201, 116, 143, 0.1) 50%, var(--cor-fundo) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            padding: 2rem;
+            margin-top: 80px; min-height: 100vh;
+            background: radial-gradient(ellipse at center, rgba(232,160,180,0.2) 0%, rgba(201,116,143,0.1) 50%, var(--cor-fundo) 100%);
+            display: flex; align-items: center; justify-content: center;
+            position: relative; overflow: hidden; padding: 2rem;
         }
+        .hero::before { content: ''; position: absolute; width: 300px; height: 300px; background: rgba(201,169,110,0.1); border-radius: 50%; top: 10%; right: 10%; animation: float 8s ease-in-out infinite; }
+        .hero::after { content: ''; position: absolute; width: 200px; height: 200px; background: rgba(232,160,180,0.1); border-radius: 50%; bottom: 10%; left: 5%; animation: float 10s ease-in-out infinite; }
+        .hero-content { text-align: center; max-width: 700px; z-index: 10; animation: fadeInUp 1s ease-out; }
+        .hero h1 { font-family: var(--fonte-titulo); font-size: 3.5rem; font-style: italic; color: var(--cor-rosa-escuro); margin-bottom: 1rem; line-height: 1.2; }
+        .hero p { font-size: 1.2rem; color: var(--cor-texto); margin-bottom: 2rem; opacity: 0.8; }
+        .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn { padding: 1rem 2rem; border: none; border-radius: 30px; font-size: 1rem; font-weight: 600; transition: all 0.3s; text-decoration: none; display: inline-block; font-family: var(--fonte-corpo); }
+        .btn-primary { background-color: var(--cor-rosa-escuro); color: var(--cor-branco); }
+        .btn-primary:hover { background-color: var(--cor-rosa-nude); transform: translateY(-3px); box-shadow: 0 10px 25px rgba(201,116,143,0.3); }
+        .btn-secondary { background-color: var(--cor-dourado); color: var(--cor-branco); }
+        .btn-secondary:hover { background-color: var(--cor-rosa-escuro); transform: translateY(-3px); }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: rgba(201, 169, 110, 0.1);
-            border-radius: 50%;
-            top: 10%;
-            right: 10%;
-            animation: float 8s ease-in-out infinite;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            background: rgba(232, 160, 180, 0.1);
-            border-radius: 50%;
-            bottom: 10%;
-            left: 5%;
-            animation: float 10s ease-in-out infinite;
-        }
-
-        .hero-content {
-            text-align: center;
-            max-width: 700px;
-            z-index: 10;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .hero h1 {
-            font-family: var(--fonte-titulo);
-            font-size: 3.5rem;
-            font-style: italic;
-            color: var(--cor-rosa-escuro);
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
+        /* ===== PRODUTOS ===== */
+        .secao-produtos { padding: 4rem 2rem; background-color: var(--cor-branco); }
+        .secao-titulo { text-align: center; margin-bottom: 3rem; }
+        .secao-titulo h2 { font-family: var(--fonte-titulo); font-size: 2.5rem; color: var(--cor-rosa-escuro); margin-bottom: 0.5rem; font-style: italic; }
+        .secao-titulo p { color: var(--cor-texto); opacity: 0.7; font-size: 1.1rem; }
+        .produtos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1200px; margin: 0 auto; }
+        .produto-card { background-color: var(--cor-cinza-claro); border-radius: 15px; overflow: hidden; transition: all 0.3s; position: relative; display: flex; flex-direction: column; }
+        .produto-card:hover { transform: scale(1.03); box-shadow: 0 15px 40px rgba(201,116,143,0.2); }
+        .produto-imagem { width: 100%; height: 250px; object-fit: cover; object-position: center; display: block; }
+        .produto-badge { position: absolute; top: 15px; right: 15px; background-color: var(--cor-dourado); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; z-index: 10; }
+        .produto-badge.esgotado { background-color: #999; }
+        .produto-info { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+        .produto-categoria { font-size: 0.85rem; color: var(--cor-rosa-escuro); font-weight: 600; text-transform: uppercase; margin-bottom: 0.5rem; }
+        .produto-nome { font-family: var(--fonte-titulo); font-size: 1.3rem; color: var(--cor-rosa-escuro); margin-bottom: 0.5rem; font-style: italic; }
+        .produto-descricao { font-size: 0.95rem; color: var(--cor-texto); opacity: 0.7; margin-bottom: 1rem; line-height: 1.4; flex: 1; }
+        .produto-preco { font-family: var(--fonte-titulo); font-size: 1.5rem; color: var(--cor-dourado); font-weight: bold; margin-bottom: 1rem; }
+        
+        .produto-quantidade { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; }
+        .produto-quantidade label { font-size: 0.9rem; color: var(--cor-texto); opacity: 0.7; }
+        .input-quantidade {
+            width: 70px; padding: 0.4rem 0.6rem;
+            border: 2px solid var(--cor-rosa-nude);
+            border-radius: 8px; font-family: var(--fonte-corpo);
+            font-size: 0.95rem; text-align: center;
             color: var(--cor-texto);
-            margin-bottom: 2rem;
-            opacity: 0.8;
         }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 30px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            font-family: var(--fonte-corpo);
-        }
-
-        .btn-primary {
-            background-color: var(--cor-rosa-escuro);
-            color: var(--cor-branco);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--cor-rosa-nude);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(201, 116, 143, 0.3);
-        }
-
-        .btn-secondary {
-            background-color: var(--cor-dourado);
-            color: var(--cor-branco);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--cor-rosa-escuro);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(201, 116, 143, 0.3);
-        }
-
-        /* ===== SEÇÃO PRODUTOS ===== */
-        .secao-produtos {
-            padding: 4rem 2rem;
-            background-color: var(--cor-branco);
-        }
-
-        .secao-titulo {
-            text-align: center;
-            margin-bottom: 3rem;
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .secao-titulo h2 {
-            font-family: var(--fonte-titulo);
-            font-size: 2.5rem;
-            color: var(--cor-rosa-escuro);
-            margin-bottom: 0.5rem;
-            font-style: italic;
-        }
-
-        .secao-titulo p {
-            color: var(--cor-texto);
-            opacity: 0.7;
-            font-size: 1.1rem;
-        }
-
-        .produtos-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .produto-card {
-            background-color: var(--cor-cinza-claro);
-            border-radius: 15px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            animation: fadeInUp 0.8s ease-out;
-            position: relative;
-        }
-
-        .produto-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(201, 116, 143, 0.2);
-        }
-
-       .produto-imagem {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-    transition: transform 0.3s ease;
-}
-
-.produto-card {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    background-color: var(--cor-cinza-claro);
-    border-radius: 15px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
-
-
-        .produto-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background-color: var(--cor-dourado);
-            color: var(--cor-branco);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            z-index: 10;
-        }
-
-        .produto-badge.esgotado {
-            background-color: #999;
-        }
-
-        .produto-info {
-            padding: 1.5rem;
-        }
-
-        .produto-categoria {
-            font-size: 0.85rem;
-            color: var(--cor-rosa-escuro);
-            font-weight: 600;
-            text-transform: uppercase;
-            margin-bottom: 0.5rem;
-        }
-
-        .produto-nome {
-            font-family: var(--fonte-titulo);
-            font-size: 1.3rem;
-            color: var(--cor-rosa-escuro);
-            margin-bottom: 0.5rem;
-            font-style: italic;
-        }
-
-        .produto-descricao {
-            font-size: 0.95rem;
-            color: var(--cor-texto);
-            opacity: 0.7;
-            margin-bottom: 1rem;
-            line-height: 1.4;
-        }
-
-        .produto-preco {
-            font-family: var(--fonte-titulo);
-            font-size: 1.5rem;
-            color: var(--cor-dourado);
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
+        .input-quantidade:focus { outline: none; border-color: var(--cor-rosa-escuro); }
 
         .btn-comprar {
-            width: 100%;
-            background-color: var(--cor-rosa-escuro);
-            color: var(--cor-branco);
-            padding: 0.8rem;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: var(--fonte-corpo);
+            width: 100%; background-color: var(--cor-rosa-escuro); color: white;
+            padding: 0.8rem; border: none; border-radius: 8px;
+            font-weight: 600; transition: all 0.3s; font-family: var(--fonte-corpo);
+            font-size: 0.95rem;
         }
+        .btn-comprar:hover:not(:disabled) { background-color: var(--cor-rosa-nude); transform: translateY(-2px); }
+        .btn-comprar:disabled { background-color: #ccc; cursor: not-allowed; opacity: 0.6; }
+        .btn-comprar.adicionado { background-color: #4caf50; }
 
-        .btn-comprar:hover:not(:disabled) {
-            background-color: var(--cor-rosa-nude);
-            transform: translateY(-2px);
+        /* ===== CARRINHO LATERAL ===== */
+        .overlay-carrinho {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+            z-index: 1100; opacity: 0; pointer-events: none; transition: opacity 0.3s;
         }
+        .overlay-carrinho.ativo { opacity: 1; pointer-events: all; }
 
-        .btn-comprar:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-            opacity: 0.6;
+        .carrinho-lateral {
+            position: fixed; top: 0; right: -450px; width: 450px; max-width: 100vw;
+            height: 100vh; background: white;
+            z-index: 1200; transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex; flex-direction: column;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.15);
         }
+        .carrinho-lateral.aberto { right: 0; }
 
-        /* ===== SEÇÃO DIFERENCIAIS ===== */
-        .secao-diferenciais {
-            padding: 4rem 2rem;
-            background-color: var(--cor-fundo);
+        .carrinho-header {
+            padding: 1.5rem; border-bottom: 2px solid var(--cor-rosa-nude);
+            display: flex; justify-content: space-between; align-items: center;
+            background: linear-gradient(135deg, var(--cor-rosa-nude) 0%, var(--cor-rosa-escuro) 100%);
+            color: white;
         }
+        .carrinho-header h2 { font-family: var(--fonte-titulo); font-size: 1.5rem; font-style: italic; }
+        .btn-fechar-carrinho { background: none; border: none; color: white; font-size: 1.8rem; line-height: 1; padding: 0; }
+        .btn-fechar-carrinho:hover { transform: scale(1.2); }
 
-        .diferenciais-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
+        .carrinho-itens { flex: 1; overflow-y: auto; padding: 1.5rem; }
+        .carrinho-vazio { text-align: center; padding: 3rem 1rem; color: var(--cor-texto); opacity: 0.5; }
+        .carrinho-vazio-icon { font-size: 4rem; margin-bottom: 1rem; }
 
-        .diferencial-card {
-            text-align: center;
-            padding: 2rem;
-            animation: fadeInUp 0.8s ease-out;
+        .item-carrinho {
+            display: flex; gap: 1rem; padding: 1rem 0;
+            border-bottom: 1px solid #f0e6e6; align-items: center;
+            animation: slideDown 0.3s ease;
         }
+        .item-carrinho img { width: 70px; height: 70px; object-fit: cover; border-radius: 8px; }
+        .item-info { flex: 1; }
+        .item-nome { font-weight: 600; font-size: 0.95rem; color: var(--cor-rosa-escuro); }
+        .item-preco { color: var(--cor-dourado); font-weight: 700; font-size: 0.9rem; margin-top: 0.3rem; }
+        .item-controles { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem; }
+        .btn-qtd { width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--cor-rosa-escuro); background: none; color: var(--cor-rosa-escuro); font-size: 1rem; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+        .btn-qtd:hover { background: var(--cor-rosa-escuro); color: white; }
+        .qtd-texto { min-width: 30px; text-align: center; font-weight: 600; }
+        .btn-remover-item { background: none; border: none; color: #ccc; font-size: 1.2rem; margin-left: auto; }
+        .btn-remover-item:hover { color: #e74c3c; }
 
-        .diferencial-icone {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            animation: float 4s ease-in-out infinite;
+        /* ===== SEÇÃO FRETE ===== */
+        .carrinho-frete {
+            padding: 1.2rem 1.5rem;
+            border-top: 2px solid var(--cor-rosa-nude);
+            background: #fdf6f0;
         }
+        .frete-titulo { font-weight: 700; color: var(--cor-texto); margin-bottom: 0.8rem; font-size: 0.95rem; }
+        .frete-input-grupo { display: flex; gap: 0.5rem; margin-bottom: 0.5rem; }
+        .input-cep {
+            flex: 1; padding: 0.6rem 0.8rem;
+            border: 2px solid var(--cor-rosa-nude); border-radius: 8px;
+            font-family: var(--fonte-corpo); font-size: 0.95rem;
+        }
+        .input-cep:focus { outline: none; border-color: var(--cor-rosa-escuro); }
+        .btn-calcular-frete {
+            padding: 0.6rem 1rem; background: var(--cor-rosa-escuro); color: white;
+            border: none; border-radius: 8px; font-weight: 600; font-size: 0.85rem;
+            white-space: nowrap;
+        }
+        .btn-calcular-frete:hover { background: var(--cor-rosa-nude); }
+        .btn-calcular-frete:disabled { opacity: 0.6; cursor: not-allowed; }
+        .resultado-frete { margin-top: 0.5rem; padding: 0.8rem; border-radius: 8px; font-size: 0.9rem; }
+        .resultado-frete.sucesso { background: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9; }
+        .resultado-frete.erro { background: #fce4ec; color: #c62828; border: 1px solid #f8bbd0; }
+        .resultado-frete.carregando { background: #fff3e0; color: #e65100; }
 
-        .diferencial-titulo {
-            font-family: var(--fonte-titulo);
-            font-size: 1.3rem;
-            color: var(--cor-rosa-escuro);
-            margin-bottom: 0.5rem;
-            font-style: italic;
+        /* ===== ENDEREÇO ===== */
+        .carrinho-endereco { padding: 0 1.5rem 1rem; background: #fdf6f0; }
+        .endereco-titulo { font-weight: 700; color: var(--cor-texto); margin-bottom: 0.8rem; font-size: 0.95rem; }
+        .endereco-campos { display: grid; gap: 0.5rem; }
+        .input-endereco {
+            width: 100%; padding: 0.6rem 0.8rem;
+            border: 2px solid var(--cor-rosa-nude); border-radius: 8px;
+            font-family: var(--fonte-corpo); font-size: 0.9rem;
         }
+        .input-endereco:focus { outline: none; border-color: var(--cor-rosa-escuro); }
+        .endereco-linha { display: grid; grid-template-columns: 2fr 1fr; gap: 0.5rem; }
 
-        .diferencial-texto {
-            color: var(--cor-texto);
-            opacity: 0.7;
-            line-height: 1.6;
+        /* ===== TOTAIS ===== */
+        .carrinho-totais {
+            padding: 1rem 1.5rem;
+            border-top: 2px solid var(--cor-rosa-nude);
+            background: white;
         }
+        .linha-total { display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.95rem; }
+        .linha-total.grande { font-size: 1.2rem; font-weight: 700; color: var(--cor-rosa-escuro); border-top: 2px solid var(--cor-rosa-nude); padding-top: 0.7rem; margin-top: 0.5rem; }
+        .linha-total span:last-child { color: var(--cor-dourado); }
+        .linha-total.grande span:last-child { color: var(--cor-rosa-escuro); }
 
-        /* ===== SEÇÃO SOBRE ===== */
-        .secao-sobre {
-            padding: 4rem 2rem;
-            background-color: var(--cor-branco);
+        .btn-enviar-whatsapp {
+            width: 100%; padding: 1rem; margin-top: 1rem;
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+            color: white; border: none; border-radius: 12px;
+            font-size: 1.1rem; font-weight: 700; font-family: var(--fonte-corpo);
+            display: flex; align-items: center; justify-content: center; gap: 0.7rem;
+            transition: all 0.3s;
         }
+        .btn-enviar-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(37,211,102,0.4); }
+        .btn-enviar-whatsapp:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
-        .sobre-container {
-            max-width: 800px;
-            margin: 0 auto;
-            animation: fadeInUp 0.8s ease-out;
-        }
+        /* ===== DIFERENCIAIS ===== */
+        .secao-diferenciais { padding: 4rem 2rem; background-color: var(--cor-fundo); }
+        .diferenciais-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1000px; margin: 0 auto; }
+        .diferencial-card { text-align: center; padding: 2rem; }
+        .diferencial-icone { font-size: 3rem; margin-bottom: 1rem; animation: float 4s ease-in-out infinite; }
+        .diferencial-titulo { font-family: var(--fonte-titulo); font-size: 1.3rem; color: var(--cor-rosa-escuro); margin-bottom: 0.5rem; font-style: italic; }
+        .diferencial-texto { color: var(--cor-texto); opacity: 0.7; line-height: 1.6; }
 
-        .secao-sobre h2 {
-            font-family: var(--fonte-titulo);
-            font-size: 2.5rem;
-            color: var(--cor-rosa-escuro);
-            margin-bottom: 1.5rem;
-            text-align: center;
-            font-style: italic;
-        }
+        /* ===== SOBRE ===== */
+        .secao-sobre { padding: 4rem 2rem; background-color: var(--cor-branco); }
+        .sobre-container { max-width: 800px; margin: 0 auto; }
+        .secao-sobre h2 { font-family: var(--fonte-titulo); font-size: 2.5rem; color: var(--cor-rosa-escuro); margin-bottom: 1.5rem; text-align: center; font-style: italic; }
+        .secao-sobre p { font-size: 1.1rem; color: var(--cor-texto); line-height: 1.8; margin-bottom: 1.5rem; text-align: justify; opacity: 0.8; }
 
-        .secao-sobre p {
-            font-size: 1.1rem;
-            color: var(--cor-texto);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            text-align: justify;
-            opacity: 0.8;
-        }
-
-        /* ===== SEÇÃO CONTATO ===== */
-        .secao-contato {
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, rgba(232, 160, 180, 0.1) 0%, rgba(201, 169, 110, 0.1) 100%);
-            text-align: center;
-        }
-
-        .secao-contato h2 {
-            font-family: var(--fonte-titulo);
-            font-size: 2.5rem;
-            color: var(--cor-rosa-escuro);
-            margin-bottom: 1rem;
-            font-style: italic;
-        }
-
-        .secao-contato p {
-            font-size: 1.1rem;
-            color: var(--cor-texto);
-            margin-bottom: 2rem;
-            opacity: 0.8;
-        }
-
-        .btn-contato {
-            background-color: var(--cor-rosa-escuro);
-            color: var(--cor-branco);
-            padding: 1rem 2.5rem;
-            border: none;
-            border-radius: 30px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            font-family: var(--fonte-corpo);
-        }
-
-        .btn-contato:hover {
-            background-color: var(--cor-dourado);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(201, 116, 143, 0.3);
-        }
+        /* ===== CONTATO ===== */
+        .secao-contato { padding: 4rem 2rem; background: linear-gradient(135deg, rgba(232,160,180,0.1) 0%, rgba(201,169,110,0.1) 100%); text-align: center; }
+        .secao-contato h2 { font-family: var(--fonte-titulo); font-size: 2.5rem; color: var(--cor-rosa-escuro); margin-bottom: 1rem; font-style: italic; }
+        .secao-contato p { font-size: 1.1rem; color: var(--cor-texto); margin-bottom: 2rem; opacity: 0.8; }
+        .btn-contato { background-color: var(--cor-rosa-escuro); color: white; padding: 1rem 2.5rem; border: none; border-radius: 30px; font-size: 1.1rem; font-weight: 600; transition: all 0.3s; text-decoration: none; display: inline-block; font-family: var(--fonte-corpo); }
+        .btn-contato:hover { background-color: var(--cor-dourado); transform: translateY(-3px); }
 
         /* ===== FOOTER ===== */
-        footer {
-            background-color: var(--cor-texto);
-            color: var(--cor-branco);
-            padding: 3rem 2rem 1rem;
-            text-align: center;
-        }
+        footer { background-color: var(--cor-texto); color: white; padding: 3rem 2rem 1rem; text-align: center; }
+        .footer-content { max-width: 1200px; margin: 0 auto 2rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .footer-section h3 { font-family: var(--fonte-titulo); font-size: 1.3rem; margin-bottom: 1rem; color: var(--cor-rosa-nude); font-style: italic; }
+        .footer-section p { opacity: 0.8; line-height: 1.6; }
+        .redes-sociais { display: flex; gap: 1rem; justify-content: center; margin-top: 1rem; }
+        .rede-social { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; background-color: var(--cor-rosa-escuro); border-radius: 50%; text-decoration: none; color: white; transition: all 0.3s; font-size: 1.2rem; }
+        .rede-social:hover { background-color: var(--cor-rosa-nude); transform: translateY(-3px); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; opacity: 0.7; }
 
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto 2rem;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .footer-section h3 {
-            font-family: var(--fonte-titulo);
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: var(--cor-rosa-nude);
-            font-style: italic;
-        }
-
-        .footer-section p {
-            opacity: 0.8;
-            line-height: 1.6;
-        }
-
-        .redes-sociais {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 1rem;
-        }
-
-        .rede-social {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: var(--cor-rosa-escuro);
-            border-radius: 50%;
-            text-decoration: none;
-            color: var(--cor-branco);
-            transition: all 0.3s ease;
-            font-size: 1.2rem;
-        }
-
-        .rede-social:hover {
-            background-color: var(--cor-rosa-nude);
-            transform: translateY(-3px);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 2rem;
-            opacity: 0.7;
-        }
-
-        /* ===== BOTÃO FLUTUANTE WHATSAPP ===== */
+        /* ===== WHATSAPP FLUTUANTE ===== */
         .whatsapp-flutuante {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background-color: #25d366;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            color: var(--cor-branco);
-            font-size: 1.8rem;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            z-index: 999;
-            animation: pulse 2s ease-in-out infinite;
+            position: fixed; bottom: 30px; right: 30px;
+            width: 60px; height: 60px; background-color: #25d366;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            text-decoration: none; color: white; font-size: 1.8rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2); transition: all 0.3s;
+            z-index: 999; animation: pulse 2s ease-in-out infinite;
         }
+        .whatsapp-flutuante:hover { transform: scale(1.1); }
 
-        .whatsapp-flutuante:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        /* ===== TOAST ===== */
+        .toast {
+            position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%) translateY(100px);
+            background: var(--cor-rosa-escuro); color: white;
+            padding: 0.8rem 1.5rem; border-radius: 25px;
+            font-weight: 600; z-index: 9999;
+            transition: transform 0.3s; pointer-events: none;
         }
+        .toast.visivel { transform: translateX(-50%) translateY(0); }
 
         /* ===== RESPONSIVO ===== */
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                gap: 1rem;
-                padding: 1rem;
-            }
-
-            nav {
-                gap: 1rem;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .hero-buttons {
-                gap: 0.5rem;
-            }
-
-            .btn {
-                padding: 0.8rem 1.5rem;
-                font-size: 0.9rem;
-            }
-
-            .produtos-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
-
-            .diferenciais-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .secao-titulo h2 {
-                font-size: 2rem;
-            }
-
-            .secao-sobre h2 {
-                font-size: 2rem;
-            }
-
-            .secao-contato h2 {
-                font-size: 2rem;
-            }
+            header { flex-direction: column; gap: 1rem; padding: 1rem; }
+            nav { gap: 1rem; flex-wrap: wrap; justify-content: center; }
+            .hero h1 { font-size: 2.2rem; }
+            .produtos-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+            .diferenciais-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-content { grid-template-columns: 1fr; gap: 1.5rem; }
+            .carrinho-lateral { width: 100vw; }
         }
-
         @media (max-width: 480px) {
-            header {
-                padding: 0.8rem;
-            }
-
-            .logo {
-                font-size: 1.3rem;
-            }
-
-            nav {
-                gap: 0.5rem;
-                font-size: 0.85rem;
-            }
-
-            .btn-whatsapp-header {
-                padding: 0.5rem 1rem;
-                font-size: 0.8rem;
-            }
-
-            .hero {
-                margin-top: 120px;
-                min-height: auto;
-                padding: 2rem 1rem;
-            }
-
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .hero p {
-                font-size: 0.95rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-                padding: 0.8rem 1rem;
-            }
-
-            .produtos-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .diferenciais-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .diferencial-card {
-                padding: 1.5rem;
-            }
-
-            .secao-produtos,
-            .secao-diferenciais,
-            .secao-sobre,
-            .secao-contato {
-                padding: 2rem 1rem;
-            }
-
-            .secao-titulo h2 {
-                font-size: 1.5rem;
-            }
-
-            .secao-sobre h2 {
-                font-size: 1.5rem;
-            }
-
-            .secao-contato h2 {
-                font-size: 1.5rem;
-            }
-
-            .whatsapp-flutuante {
-                width: 50px;
-                height: 50px;
-                bottom: 20px;
-                right: 20px;
-                font-size: 1.5rem;
-            }
+            header { padding: 0.8rem; }
+            .logo { font-size: 1.3rem; }
+            nav { gap: 0.5rem; font-size: 0.85rem; }
+            .hero { margin-top: 120px; min-height: auto; padding: 2rem 1rem; }
+            .hero h1 { font-size: 1.8rem; }
+            .hero-buttons { flex-direction: column; }
+            .btn { width: 100%; padding: 0.8rem 1rem; }
+            .produtos-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .diferenciais-grid { grid-template-columns: 1fr; }
+            .secao-produtos, .secao-diferenciais, .secao-sobre, .secao-contato { padding: 2rem 1rem; }
+            .whatsapp-flutuante { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 1.5rem; }
         }
     </style>
 </head>
 <body>
-    <!-- ✏️ EDITE AQUI: Número do WhatsApp (com DDI, sem + e sem espaços) -->
-    <script>
-        const WHATSAPP = "5585998474074";
-        
-        // ✏️ EDITE AQUI: Array de produtos - para adicionar novo produto, copie um objeto e edite os campos
-        const produtos = [
-            {
-                id: 1,
-                nome: "Base Líquida Matte",
-                categoria: "Maquiagem",
-                descricao: "Cobertura total com acabamento matte. Dura até 24h.",
-                preco: "R$ 89,90",
-                imagem: "images/base-liquida.webp",
-                emEstoque: true
-            },
-            {
-                id: 2,
-                nome: "Batom Veludo Rosa",
-                categoria: "Lábios",
-                descricao: "Tom rosé perfeito para o dia a dia. Ultra hidratante.",
-                preco: "R$ 49,90",
-                imagem: "images/batom.webp",
-                emEstoque: true
-            },
-            {
-                id: 3,
-                nome: "Sérum Vitamina C",
-                categoria: "Skincare",
-                descricao: "Ilumina, uniformiza e protege a pele.",
-                preco: "R$ 129,90",
-                imagem: "images/serum.jpg",
-                emEstoque: true
-            },
-            {
-                id: 4,
-                nome: "Paleta de Sombras Rosê",
-                categoria: "Olhos",
-                descricao: "12 tons entre matte e shimmer para looks deslumbrantes.",
-                preco: "R$ 159,90",
-                imagem: "images/paleta.jpg",
-                emEstoque: false
-            },
-{
-    id: 5,
-    nome: "base liquida ",
-    categoria: "facial",
-    descricao: "base liquida para sua maquiagem fica perfeita .",
-    preco: "R$ 10,00",
-    imagem: "images/base-lq.jpg",
-    emEstoque: true
-},
 
+    <script>
+        // ✏️ EDITE: Número do WhatsApp
+        const WHATSAPP = "5585998474074";
+
+        // ✏️ EDITE: Produtos
+        const produtos = [
+            { id: 1, nome: "Base Líquida Matte", categoria: "Maquiagem", descricao: "Cobertura total com acabamento matte. Dura até 24h.", preco: 89.90, imagem: "images/base-liquida.webp", emEstoque: true },
+            { id: 2, nome: "Batom Veludo Rosa", categoria: "Lábios", descricao: "Tom rosé perfeito para o dia a dia. Ultra hidratante.", preco: 49.90, imagem: "images/batom.webp", emEstoque: true },
+            { id: 3, nome: "Sérum Vitamina C", categoria: "Skincare", descricao: "Ilumina, uniformiza e protege a pele.", preco: 129.90, imagem: "images/serum.jpg", emEstoque: true },
+            { id: 4, nome: "Paleta de Sombras Rosê", categoria: "Olhos", descricao: "12 tons entre matte e shimmer para looks deslumbrantes.", preco: 159.90, imagem: "images/paleta.jpg", emEstoque: false },
+            { id: 5, nome: "Base Líquida Natural", categoria: "Facial", descricao: "Base líquida para sua maquiagem ficar perfeita.", preco: 10.00, imagem: "images/base-lq.jpg", emEstoque: true },
         ];
 
-        // Função para criar partículas decorativas
+        // Estado do carrinho
+        let carrinho = [];
+        let freteInfo = null;
+        let endereco = {};
+
+        function formatarPreco(valor) {
+            return `R$ ${valor.toFixed(2).replace('.', ',')}`;
+        }
+
         function criarParticulas() {
             const emojis = ['✦', '✿', '✧', '✨'];
-            const container = document.body;
-            
             for (let i = 0; i < 15; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.top = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 2 + 's';
-                particle.style.animationDuration = (Math.random() * 4 + 6) + 's';
-                container.appendChild(particle);
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                p.style.left = Math.random() * 100 + '%';
+                p.style.top = Math.random() * 100 + '%';
+                p.style.animationDelay = Math.random() * 2 + 's';
+                p.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                document.body.appendChild(p);
             }
         }
 
-        // Função para renderizar produtos
+        function mostrarToast(msg) {
+            const t = document.getElementById('toast');
+            t.textContent = msg;
+            t.classList.add('visivel');
+            setTimeout(() => t.classList.remove('visivel'), 2500);
+        }
+
+        function adicionarAoCarrinho(id, qtd) {
+            const produto = produtos.find(p => p.id === id);
+            if (!produto || !produto.emEstoque) return;
+            const qtdNum = parseInt(qtd) || 1;
+            if (qtdNum < 1) return;
+            const existente = carrinho.find(i => i.id === id);
+            if (existente) {
+                existente.quantidade += qtdNum;
+            } else {
+                carrinho.push({ ...produto, quantidade: qtdNum });
+            }
+            atualizarCarrinho();
+            mostrarToast(`✓ ${produto.nome} adicionado ao carrinho!`);
+        }
+
+        function removerDoCarrinho(id) {
+            carrinho = carrinho.filter(i => i.id !== id);
+            atualizarCarrinho();
+        }
+
+        function alterarQuantidade(id, delta) {
+            const item = carrinho.find(i => i.id === id);
+            if (!item) return;
+            item.quantidade += delta;
+            if (item.quantidade <= 0) removerDoCarrinho(id);
+            else atualizarCarrinho();
+        }
+
+        function calcularSubtotal() {
+            return carrinho.reduce((total, item) => total + item.preco * item.quantidade, 0);
+        }
+
+        function atualizarCarrinho() {
+            const totalItens = carrinho.reduce((t, i) => t + i.quantidade, 0);
+            const badge = document.getElementById('badge-carrinho');
+            if (totalItens > 0) {
+                badge.style.display = 'flex';
+                badge.textContent = totalItens;
+            } else {
+                badge.style.display = 'none';
+            }
+
+            const container = document.getElementById('itens-carrinho');
+            if (carrinho.length === 0) {
+                container.innerHTML = `<div class="carrinho-vazio"><div class="carrinho-vazio-icon">🛒</div><p>Seu carrinho está vazio</p><p style="font-size:0.85rem;margin-top:0.5rem;">Adicione produtos para continuar</p></div>`;
+            } else {
+                container.innerHTML = carrinho.map(item => `
+                    <div class="item-carrinho">
+                        <img src="${item.imagem}" alt="${item.nome}" onerror="this.src='data:image/svg+xml,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'70\\' height=\\'70\\'><rect width=\\'70\\' height=\\'70\\' fill=\\'%23f5e6ec\\'/><text x=\\'50%\\' y=\\'50%\\' dominant-baseline=\\'middle\\' text-anchor=\\'middle\\' font-size=\\'24\\'>💄</text></svg>'">
+                        <div class="item-info">
+                            <div class="item-nome">${item.nome}</div>
+                            <div class="item-preco">${formatarPreco(item.preco)} un.</div>
+                            <div class="item-controles">
+                                <button class="btn-qtd" onclick="alterarQuantidade(${item.id}, -1)">−</button>
+                                <span class="qtd-texto">${item.quantidade}</span>
+                                <button class="btn-qtd" onclick="alterarQuantidade(${item.id}, +1)">+</button>
+                                <strong style="margin-left:0.5rem;color:var(--cor-dourado)">${formatarPreco(item.preco * item.quantidade)}</strong>
+                            </div>
+                        </div>
+                        <button class="btn-remover-item" onclick="removerDoCarrinho(${item.id})" title="Remover">✕</button>
+                    </div>
+                `).join('');
+            }
+
+            const subtotal = calcularSubtotal();
+            const frete = freteInfo ? freteInfo.valor : 0;
+            const total = subtotal + frete;
+
+            document.getElementById('subtotal').textContent = formatarPreco(subtotal);
+            document.getElementById('frete-valor').textContent = freteInfo ? formatarPreco(freteInfo.valor) : 'Não calculado';
+            document.getElementById('total-final').textContent = formatarPreco(total);
+
+            const btnWpp = document.getElementById('btn-enviar-whatsapp');
+            btnWpp.disabled = carrinho.length === 0;
+        }
+
+        // ===== FRETE via ViaCEP + cálculo SEDEX estimado =====
+        // Nota: A API oficial dos Correios requer autenticação (SIGEP).
+        // Usamos ViaCEP para validar o CEP e calcular um valor estimado de SEDEX
+        // baseado no peso dos produtos e região de destino.
+        // Para integração real com a tabela dos Correios, seria necessário um backend.
+
+        async function calcularFrete() {
+            const cepInput = document.getElementById('input-cep').value.replace(/\D/g, '');
+            const btnCalc = document.getElementById('btn-calcular-frete');
+            const resultado = document.getElementById('resultado-frete');
+
+            if (cepInput.length !== 8) {
+                resultado.className = 'resultado-frete erro';
+                resultado.innerHTML = '❌ CEP inválido. Digite 8 dígitos.';
+                return;
+            }
+
+            if (carrinho.length === 0) {
+                resultado.className = 'resultado-frete erro';
+                resultado.innerHTML = '❌ Adicione produtos ao carrinho primeiro.';
+                return;
+            }
+
+            btnCalc.disabled = true;
+            resultado.className = 'resultado-frete carregando';
+            resultado.innerHTML = '⏳ Consultando CEP...';
+
+            try {
+                const resp = await fetch(`https://viacep.com.br/ws/${cepInput}/json/`);
+                const dados = await resp.json();
+
+                if (dados.erro) {
+                    resultado.className = 'resultado-frete erro';
+                    resultado.innerHTML = '❌ CEP não encontrado. Verifique e tente novamente.';
+                    btnCalc.disabled = false;
+                    return;
+                }
+
+                // Preencher endereço automaticamente
+                document.getElementById('end-rua').value = dados.logradouro || '';
+                document.getElementById('end-bairro').value = dados.bairro || '';
+                document.getElementById('end-cidade').value = dados.localidade || '';
+                document.getElementById('end-estado').value = dados.uf || '';
+
+                // Calcular frete SEDEX estimado por região (UF)
+                const pesoEstimado = carrinho.reduce((p, i) => p + 0.3 * i.quantidade, 0); // 300g por item estimado
+                const valorFreteSEDEX = calcularSEDEX(dados.uf, pesoEstimado);
+
+                freteInfo = {
+                    valor: valorFreteSEDEX,
+                    prazo: estimarPrazo(dados.uf),
+                    cep: cepInput,
+                    endereco: `${dados.logradouro || ''}, ${dados.bairro || ''} - ${dados.localidade || ''}/${dados.uf || ''}`
+                };
+
+                resultado.className = 'resultado-frete sucesso';
+                resultado.innerHTML = `
+                    ✅ <strong>SEDEX — ${formatarPreco(valorFreteSEDEX)}</strong><br>
+                    📍 ${dados.logradouro || ''}, ${dados.bairro || ''}<br>
+                    🏙️ ${dados.localidade}/${dados.uf}<br>
+                    📅 Prazo estimado: ${freteInfo.prazo} dias úteis<br>
+                    <small style="opacity:0.8">*Valor estimado. Sujeito a confirmação.</small>
+                `;
+
+                atualizarCarrinho();
+
+            } catch (e) {
+                resultado.className = 'resultado-frete erro';
+                resultado.innerHTML = '❌ Erro ao consultar CEP. Verifique sua conexão.';
+            }
+
+            btnCalc.disabled = false;
+        }
+
+        // Tabela estimada SEDEX por região (valores aproximados 2024)
+        function calcularSEDEX(uf, pesoKg) {
+            const regioes = {
+                // Nordeste (CE origem)
+                CE: 1, // local
+                MA: 2, PE: 2, PI: 2, PB: 2, RN: 2, AL: 2, SE: 2, BA: 2,
+                // Sudeste
+                SP: 3, RJ: 3, MG: 3, ES: 3,
+                // Sul
+                PR: 4, SC: 4, RS: 4,
+                // Centro-Oeste
+                GO: 3, DF: 3, MT: 4, MS: 4,
+                // Norte
+                AM: 5, PA: 5, AC: 6, RO: 5, RR: 6, TO: 4, AP: 6
+            };
+            const faixaRegiao = regioes[uf] || 4;
+            
+            // Base + peso
+            const bases = { 1: 15, 2: 22, 3: 28, 4: 32, 5: 38, 6: 45 };
+            const base = bases[faixaRegiao];
+            const adicionalPeso = Math.max(0, pesoKg - 0.3) * 8;
+            return parseFloat((base + adicionalPeso).toFixed(2));
+        }
+
+        function estimarPrazo(uf) {
+            const prazos = {
+                CE: 1, MA: 2, PE: 2, PI: 2, PB: 2, RN: 2, AL: 2, SE: 2, BA: 2,
+                SP: 3, RJ: 3, MG: 3, ES: 3,
+                PR: 4, SC: 4, RS: 4,
+                GO: 3, DF: 3, MT: 5, MS: 4,
+                AM: 7, PA: 6, AC: 10, RO: 7, RR: 10, TO: 5, AP: 10
+            };
+            return prazos[uf] || 5;
+        }
+
+        function formatarCEP(input) {
+            let val = input.value.replace(/\D/g, '').slice(0, 8);
+            if (val.length > 5) val = val.slice(0, 5) + '-' + val.slice(5);
+            input.value = val;
+        }
+
+        // ===== ENVIO VIA WHATSAPP =====
+        function enviarPedidoWhatsApp() {
+            if (carrinho.length === 0) return;
+
+            const endRua = document.getElementById('end-rua').value;
+            const endNum = document.getElementById('end-numero').value;
+            const endCompl = document.getElementById('end-complemento').value;
+            const endBairro = document.getElementById('end-bairro').value;
+            const endCidade = document.getElementById('end-cidade').value;
+            const endEstado = document.getElementById('end-estado').value;
+            const endCep = document.getElementById('input-cep').value;
+            const nomeCliente = document.getElementById('end-nome').value;
+
+            if (!nomeCliente) { mostrarToast('⚠️ Digite seu nome'); return; }
+            if (!endRua || !endNum || !endCidade) { mostrarToast('⚠️ Preencha o endereço completo'); return; }
+            if (!freteInfo) { mostrarToast('⚠️ Calcule o frete antes de finalizar'); return; }
+
+            const linhasSeparador = '─────────────────────';
+            const subtotal = calcularSubtotal();
+            const totalFinal = subtotal + freteInfo.valor;
+
+            const itensMensagem = carrinho.map(item =>
+                `▪ *${item.nome}*\n   Qtd: ${item.quantidade} × ${formatarPreco(item.preco)} = *${formatarPreco(item.preco * item.quantidade)}*`
+            ).join('\n');
+
+            const enderecoCompleto = [endRua, endNum, endCompl, endBairro, endCidade, endEstado, `CEP: ${endCep}`].filter(Boolean).join(', ');
+
+            const mensagem = 
+`🌸 *NOVO PEDIDO — ÁGAPE BEAUTY* 🌸
+${linhasSeparador}
+
+👤 *Cliente:* ${nomeCliente}
+
+🛍️ *ITENS DO PEDIDO:*
+${itensMensagem}
+
+${linhasSeparador}
+💰 *Subtotal:* ${formatarPreco(subtotal)}
+🚚 *Frete SEDEX:* ${formatarPreco(freteInfo.valor)} (${freteInfo.prazo} dias úteis)
+✨ *TOTAL: ${formatarPreco(totalFinal)}*
+
+${linhasSeparador}
+📍 *ENDEREÇO DE ENTREGA:*
+${enderecoCompleto}
+
+${linhasSeparador}
+_Pedido enviado pelo site Ágape Beauty_ 💄`;
+
+            const url = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(mensagem)}`;
+            window.open(url, '_blank');
+        }
+
+        // ===== CARRINHO UI =====
+        function abrirCarrinho() {
+            document.getElementById('carrinho-lateral').classList.add('aberto');
+            document.getElementById('overlay-carrinho').classList.add('ativo');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function fecharCarrinho() {
+            document.getElementById('carrinho-lateral').classList.remove('aberto');
+            document.getElementById('overlay-carrinho').classList.remove('ativo');
+            document.body.style.overflow = '';
+        }
+
         function renderizarProdutos() {
             const grid = document.getElementById('produtos-grid');
             grid.innerHTML = '';
-            
             produtos.forEach((produto, index) => {
                 const card = document.createElement('div');
                 card.className = 'produto-card';
                 card.style.animationDelay = (index * 0.1) + 's';
-                
-                const badge = produto.emEstoque 
+
+                const badge = produto.emEstoque
                     ? `<span class="produto-badge">${produto.categoria}</span>`
                     : `<span class="produto-badge esgotado">Esgotado</span>`;
-                
-                const urlWhatsApp = `https://wa.me/${WHATSAPP}?text=Olá! Tenho interesse no produto: *${produto.nome}* - ${produto.preco}. Ainda está disponível?`;
-                
-                const botaoTexto = produto.emEstoque ? 'Comprar via WhatsApp' : 'Indisponível';
-                
+
                 card.innerHTML = `
-                    <img src="${produto.imagem}" alt="${produto.nome}" class="produto-imagem">
+                    <img src="${produto.imagem}" alt="${produto.nome}" class="produto-imagem" onerror="this.src='data:image/svg+xml,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'300\\' height=\\'250\\'><rect width=\\'300\\' height=\\'250\\' fill=\\'%23f5e6ec\\'/><text x=\\'50%\\' y=\\'50%\\' dominant-baseline=\\'middle\\' text-anchor=\\'middle\\' font-size=\\'48\\'>💄</text></svg>'">
                     ${badge}
                     <div class="produto-info">
                         <div class="produto-categoria">${produto.categoria}</div>
                         <h3 class="produto-nome">${produto.nome}</h3>
                         <p class="produto-descricao">${produto.descricao}</p>
-                        <div class="produto-preco">${produto.preco}</div>
-                        <a href="${urlWhatsApp}" target="_blank" class="btn-comprar" ${!produto.emEstoque ? 'disabled' : ''}>${botaoTexto}</a>
+                        <div class="produto-preco">${formatarPreco(produto.preco)}</div>
+                        ${produto.emEstoque ? `
+                            <div class="produto-quantidade">
+                                <label for="qtd-${produto.id}">Quantidade:</label>
+                                <input type="number" id="qtd-${produto.id}" class="input-quantidade" value="1" min="1" max="99">
+                            </div>
+                            <button class="btn-comprar" onclick="adicionarCarrinhoBtn(${produto.id}, this)">🛒 Adicionar ao Carrinho</button>
+                        ` : `
+                            <button class="btn-comprar" disabled>Indisponível</button>
+                        `}
                     </div>
                 `;
-                
                 grid.appendChild(card);
             });
         }
 
-        // Função para abrir WhatsApp
-        function abrirWhatsApp() {
-            const mensagem = "Olá! Vim pelo site da Ágape Beauty e gostaria de mais informações.";
-            const url = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(mensagem)}`;
-            window.open(url, '_blank');
+        function adicionarCarrinhoBtn(id, btn) {
+            const qtdInput = document.getElementById(`qtd-${id}`);
+            const qtd = parseInt(qtdInput?.value) || 1;
+            adicionarAoCarrinho(id, qtd);
+            const original = btn.textContent;
+            btn.textContent = '✓ Adicionado!';
+            btn.classList.add('adicionado');
+            setTimeout(() => {
+                btn.textContent = original;
+                btn.classList.remove('adicionado');
+            }, 1500);
         }
 
-        // Inicializar ao carregar a página
+        function abrirWhatsApp() {
+            const mensagem = "Olá! Vim pelo site da Ágape Beauty e gostaria de mais informações.";
+            window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(mensagem)}`, '_blank');
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             criarParticulas();
             renderizarProdutos();
-            
-            // Scroll suave para links de navegação
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
+            atualizarCarrinho();
+
+            document.querySelectorAll('a[href^="#"]').forEach(a => {
+                a.addEventListener('click', function(e) {
                     e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth' });
-                    }
+                    const t = document.querySelector(this.getAttribute('href'));
+                    if (t) t.scrollIntoView({ behavior: 'smooth' });
                 });
+            });
+
+            document.getElementById('input-cep').addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') calcularFrete();
             });
         });
     </script>
 
-    <!-- ===== HEADER ===== -->
+    <!-- TOAST -->
+    <div class="toast" id="toast"></div>
+
+    <!-- OVERLAY CARRINHO -->
+    <div class="overlay-carrinho" id="overlay-carrinho" onclick="fecharCarrinho()"></div>
+
+    <!-- CARRINHO LATERAL -->
+    <div class="carrinho-lateral" id="carrinho-lateral">
+        <div class="carrinho-header">
+            <h2>🛒 Meu Carrinho</h2>
+            <button class="btn-fechar-carrinho" onclick="fecharCarrinho()">✕</button>
+        </div>
+
+        <div class="carrinho-itens" id="itens-carrinho">
+            <div class="carrinho-vazio">
+                <div class="carrinho-vazio-icon">🛒</div>
+                <p>Seu carrinho está vazio</p>
+            </div>
+        </div>
+
+        <!-- FRETE -->
+        <div class="carrinho-frete">
+            <div class="frete-titulo">🚚 Calcular Frete (SEDEX)</div>
+            <div class="frete-input-grupo">
+                <input type="text" id="input-cep" class="input-cep" placeholder="00000-000" maxlength="9" oninput="formatarCEP(this)">
+                <button class="btn-calcular-frete" id="btn-calcular-frete" onclick="calcularFrete()">Calcular</button>
+            </div>
+            <div id="resultado-frete"></div>
+        </div>
+
+        <!-- ENDEREÇO -->
+        <div class="carrinho-endereco">
+            <div class="endereco-titulo">📍 Endereço de Entrega</div>
+            <div class="endereco-campos">
+                <input type="text" id="end-nome" class="input-endereco" placeholder="Seu nome completo *">
+                <input type="text" id="end-rua" class="input-endereco" placeholder="Rua / Avenida *">
+                <div class="endereco-linha">
+                    <input type="text" id="end-numero" class="input-endereco" placeholder="Número *">
+                    <input type="text" id="end-complemento" class="input-endereco" placeholder="Complemento">
+                </div>
+                <input type="text" id="end-bairro" class="input-endereco" placeholder="Bairro">
+                <div class="endereco-linha">
+                    <input type="text" id="end-cidade" class="input-endereco" placeholder="Cidade">
+                    <input type="text" id="end-estado" class="input-endereco" placeholder="UF" maxlength="2">
+                </div>
+            </div>
+        </div>
+
+        <!-- TOTAIS -->
+        <div class="carrinho-totais">
+            <div class="linha-total">
+                <span>Subtotal:</span>
+                <span id="subtotal">R$ 0,00</span>
+            </div>
+            <div class="linha-total">
+                <span>Frete SEDEX:</span>
+                <span id="frete-valor">Não calculado</span>
+            </div>
+            <div class="linha-total grande">
+                <span>Total:</span>
+                <span id="total-final">R$ 0,00</span>
+            </div>
+            <button class="btn-enviar-whatsapp" id="btn-enviar-whatsapp" onclick="enviarPedidoWhatsApp()" disabled>
+                <span style="font-size:1.3rem">💬</span> Finalizar Pedido via WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <!-- HEADER -->
     <header id="inicio">
         <div class="logo">
             <span class="logo-parte1">Ágape</span>
@@ -945,11 +768,14 @@
             <a href="#produtos">Produtos</a>
             <a href="#sobre">Sobre</a>
             <a href="#contato">Contato</a>
-            <a href="javascript:void(0);" class="btn-whatsapp-header" onclick="abrirWhatsApp()">💬 WhatsApp</a>
+            <button class="btn-carrinho-header" onclick="abrirCarrinho()">
+                🛒 Carrinho
+                <span class="badge-carrinho" id="badge-carrinho">0</span>
+            </button>
         </nav>
     </header>
 
-    <!-- ===== HERO SECTION ===== -->
+    <!-- HERO -->
     <section class="hero">
         <div class="hero-content">
             <h1>Beleza que transforma, amor que inspira</h1>
@@ -961,18 +787,16 @@
         </div>
     </section>
 
-    <!-- ===== SEÇÃO PRODUTOS ===== -->
+    <!-- PRODUTOS -->
     <section class="secao-produtos" id="produtos">
         <div class="secao-titulo">
             <h2>Nossos Produtos</h2>
             <p>Seleção cuidadosa de cosméticos premium para sua beleza</p>
         </div>
-        <div class="produtos-grid" id="produtos-grid">
-            <!-- Produtos renderizados por JavaScript -->
-        </div>
+        <div class="produtos-grid" id="produtos-grid"></div>
     </section>
 
-    <!-- ===== SEÇÃO DIFERENCIAIS ===== -->
+    <!-- DIFERENCIAIS -->
     <section class="secao-diferenciais">
         <div class="diferenciais-grid">
             <div class="diferencial-card">
@@ -993,35 +817,24 @@
         </div>
     </section>
 
-    <!-- ===== SEÇÃO SOBRE ===== -->
+    <!-- SOBRE -->
     <section class="secao-sobre" id="sobre">
         <div class="sobre-container">
             <h2>Sobre a Ágape Beauty</h2>
-            <p>
-                A Ágape Beauty nasceu da paixão por beleza e do desejo de transformar vidas através de cosméticos de qualidade premium. 
-                Acreditamos que a verdadeira beleza vem de dentro para fora, e nossos produtos são cuidadosamente selecionados para 
-                potencializar sua autoconfiança e bem-estar.
-            </p>
-            <p>
-                Com uma abordagem boutique e personalizada, oferecemos uma experiência de compra única, onde cada cliente é tratado 
-                com carinho e atenção especial. Nossa missão é inspirar e empoderar mulheres através de produtos inovadores, 
-                sustentáveis e que realmente funcionam.
-            </p>
-            <p>
-                Cada produto em nosso catálogo passou por rigoroso controle de qualidade. Trabalhamos apenas com marcas confiáveis 
-                e fornecedores verificados, garantindo que você receba o melhor do melhor.
-            </p>
+            <p>A Ágape Beauty nasceu da paixão por beleza e do desejo de transformar vidas através de cosméticos de qualidade premium. Acreditamos que a verdadeira beleza vem de dentro para fora, e nossos produtos são cuidadosamente selecionados para potencializar sua autoconfiança e bem-estar.</p>
+            <p>Com uma abordagem boutique e personalizada, oferecemos uma experiência de compra única, onde cada cliente é tratado com carinho e atenção especial. Nossa missão é inspirar e empoderar mulheres através de produtos inovadores, sustentáveis e que realmente funcionam.</p>
+            <p>Cada produto em nosso catálogo passou por rigoroso controle de qualidade. Trabalhamos apenas com marcas confiáveis e fornecedores verificados, garantindo que você receba o melhor do melhor.</p>
         </div>
     </section>
 
-    <!-- ===== SEÇÃO CONTATO ===== -->
+    <!-- CONTATO -->
     <section class="secao-contato" id="contato">
         <h2>Vamos Conversar?</h2>
         <p>Tem dúvidas ou quer conhecer melhor nossos produtos? Entre em contato conosco!</p>
         <button class="btn-contato" onclick="abrirWhatsApp()">💬 Falar no WhatsApp</button>
     </section>
 
-    <!-- ===== FOOTER ===== -->
+    <!-- FOOTER -->
     <footer>
         <div class="footer-content">
             <div class="footer-section">
@@ -1031,7 +844,6 @@
             <div class="footer-section">
                 <h3>Redes Sociais</h3>
                 <div class="redes-sociais">
-                    <!-- ✏️ EDITE AQUI: Adicione links das suas redes sociais -->
                     <a href="https://instagram.com" target="_blank" class="rede-social">📷</a>
                     <a href="https://facebook.com" target="_blank" class="rede-social">f</a>
                     <a href="https://tiktok.com" target="_blank" class="rede-social">♪</a>
@@ -1040,7 +852,7 @@
             <div class="footer-section">
                 <h3>Contato</h3>
                 <p>WhatsApp: <strong>+55 85 99847-4074</strong></p>
-                <p>Email: <strong> jasielsilva341@gmail.com</strong></p>
+                <p>Email: <strong>agapebeauty@email.com</strong></p>
             </div>
         </div>
         <div class="footer-bottom">
@@ -1048,9 +860,8 @@
         </div>
     </footer>
 
-    <!-- ===== BOTÃO FLUTUANTE WHATSAPP ===== -->
-    <a href="javascript:void(0);" class="whatsapp-flutuante" onclick="abrirWhatsApp()" title="Falar no WhatsApp">
-        💬
-    </a>
+    <!-- WHATSAPP FLUTUANTE -->
+    <a href="javascript:void(0);" class="whatsapp-flutuante" onclick="abrirWhatsApp()" title="Falar no WhatsApp">💬</a>
+
 </body>
 </html>
