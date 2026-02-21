@@ -179,13 +179,66 @@
         .btn-remover-item { background: none; border: none; color: #ccc; font-size: 1.2rem; margin-left: auto; }
         .btn-remover-item:hover { color: #e74c3c; }
 
-        /* ===== SEÇÃO FRETE ===== */
-        .carrinho-frete {
-            padding: 1.2rem 1.5rem;
-            border-top: 2px solid var(--cor-rosa-nude);
-            background: #fdf6f0;
+        /* ===== STEPS DO CARRINHO ===== */
+        .steps-indicator {
+            display: flex; padding: 0.8rem 1.5rem;
+            background: #fdf6f0; border-bottom: 1px solid var(--cor-rosa-nude);
+            gap: 0;
         }
-        .frete-titulo { font-weight: 700; color: var(--cor-texto); margin-bottom: 0.8rem; font-size: 0.95rem; }
+        .step-item {
+            flex: 1; display: flex; flex-direction: column; align-items: center;
+            gap: 0.3rem; position: relative; font-size: 0.78rem;
+            color: #bbb; font-weight: 600;
+        }
+        .step-item::after {
+            content: ''; position: absolute; top: 13px; left: 50%; width: 100%;
+            height: 2px; background: #e0e0e0; z-index: 0;
+        }
+        .step-item:last-child::after { display: none; }
+        .step-circulo {
+            width: 28px; height: 28px; border-radius: 50%;
+            background: #e0e0e0; color: #999;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.8rem; font-weight: 700; z-index: 1;
+            transition: all 0.3s;
+        }
+        .step-item.ativo .step-circulo { background: var(--cor-rosa-escuro); color: white; }
+        .step-item.ativo { color: var(--cor-rosa-escuro); }
+        .step-item.concluido .step-circulo { background: #4caf50; color: white; }
+        .step-item.concluido { color: #4caf50; }
+
+        /* Painéis de step */
+        .step-painel { display: none; flex-direction: column; flex: 1; overflow: hidden; min-height: 0; }
+        .step-painel.ativo { display: flex; }
+
+        /* Step 1 - itens */
+        .painel-itens { flex: 1; overflow-y: auto; padding: 1rem 1.5rem; }
+
+        /* Step 1 - rodapé */
+        .step1-footer {
+            padding: 1rem 1.5rem;
+            border-top: 2px solid var(--cor-rosa-nude);
+            background: white;
+        }
+        .linha-subtotal { display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 1rem; font-weight: 600; }
+        .linha-subtotal span:last-child { color: var(--cor-dourado); font-size: 1.1rem; }
+
+        .btn-confirmar-pedido {
+            width: 100%; padding: 1rem;
+            background: linear-gradient(135deg, var(--cor-rosa-escuro) 0%, var(--cor-rosa-nude) 100%);
+            color: white; border: none; border-radius: 12px;
+            font-size: 1.05rem; font-weight: 700; font-family: var(--fonte-corpo);
+            display: flex; align-items: center; justify-content: center; gap: 0.7rem;
+            transition: all 0.3s;
+        }
+        .btn-confirmar-pedido:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(201,116,143,0.4); }
+        .btn-confirmar-pedido:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+        /* Step 2 - frete e endereço */
+        .painel-frete-endereco { flex: 1; overflow-y: auto; padding: 1.2rem 1.5rem; display: flex; flex-direction: column; gap: 1.2rem; }
+
+        .bloco-titulo { font-weight: 700; color: var(--cor-texto); margin-bottom: 0.7rem; font-size: 0.95rem; display: flex; align-items: center; gap: 0.4rem; }
+
         .frete-input-grupo { display: flex; gap: 0.5rem; margin-bottom: 0.5rem; }
         .input-cep {
             flex: 1; padding: 0.6rem 0.8rem;
@@ -200,14 +253,11 @@
         }
         .btn-calcular-frete:hover { background: var(--cor-rosa-nude); }
         .btn-calcular-frete:disabled { opacity: 0.6; cursor: not-allowed; }
-        .resultado-frete { margin-top: 0.5rem; padding: 0.8rem; border-radius: 8px; font-size: 0.9rem; }
+        .resultado-frete { margin-top: 0.5rem; padding: 0.8rem; border-radius: 8px; font-size: 0.85rem; line-height: 1.6; }
         .resultado-frete.sucesso { background: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9; }
         .resultado-frete.erro { background: #fce4ec; color: #c62828; border: 1px solid #f8bbd0; }
         .resultado-frete.carregando { background: #fff3e0; color: #e65100; }
 
-        /* ===== ENDEREÇO ===== */
-        .carrinho-endereco { padding: 0 1.5rem 1rem; background: #fdf6f0; }
-        .endereco-titulo { font-weight: 700; color: var(--cor-texto); margin-bottom: 0.8rem; font-size: 0.95rem; }
         .endereco-campos { display: grid; gap: 0.5rem; }
         .input-endereco {
             width: 100%; padding: 0.6rem 0.8rem;
@@ -217,23 +267,32 @@
         .input-endereco:focus { outline: none; border-color: var(--cor-rosa-escuro); }
         .endereco-linha { display: grid; grid-template-columns: 2fr 1fr; gap: 0.5rem; }
 
-        /* ===== TOTAIS ===== */
-        .carrinho-totais {
+        /* Step 2 - rodapé */
+        .step2-footer {
             padding: 1rem 1.5rem;
             border-top: 2px solid var(--cor-rosa-nude);
             background: white;
         }
-        .linha-total { display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.95rem; }
-        .linha-total.grande { font-size: 1.2rem; font-weight: 700; color: var(--cor-rosa-escuro); border-top: 2px solid var(--cor-rosa-nude); padding-top: 0.7rem; margin-top: 0.5rem; }
+        .linha-total { display: flex; justify-content: space-between; margin-bottom: 0.4rem; font-size: 0.9rem; }
         .linha-total span:last-child { color: var(--cor-dourado); }
+        .linha-total.grande { font-size: 1.15rem; font-weight: 700; color: var(--cor-rosa-escuro); border-top: 2px solid var(--cor-rosa-nude); padding-top: 0.6rem; margin-top: 0.4rem; }
         .linha-total.grande span:last-child { color: var(--cor-rosa-escuro); }
 
+        .step2-botoes { display: flex; gap: 0.6rem; margin-top: 0.8rem; }
+        .btn-voltar {
+            padding: 0.8rem 1rem; background: none;
+            border: 2px solid var(--cor-rosa-nude); border-radius: 10px;
+            color: var(--cor-rosa-escuro); font-weight: 600; font-family: var(--fonte-corpo);
+            font-size: 0.9rem; white-space: nowrap;
+        }
+        .btn-voltar:hover { background: var(--cor-rosa-nude); color: white; }
+
         .btn-enviar-whatsapp {
-            width: 100%; padding: 1rem; margin-top: 1rem;
+            flex: 1; padding: 0.8rem;
             background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
-            color: white; border: none; border-radius: 12px;
-            font-size: 1.1rem; font-weight: 700; font-family: var(--fonte-corpo);
-            display: flex; align-items: center; justify-content: center; gap: 0.7rem;
+            color: white; border: none; border-radius: 10px;
+            font-size: 0.95rem; font-weight: 700; font-family: var(--fonte-corpo);
+            display: flex; align-items: center; justify-content: center; gap: 0.5rem;
             transition: all 0.3s;
         }
         .btn-enviar-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(37,211,102,0.4); }
@@ -405,7 +464,7 @@
 
             const container = document.getElementById('itens-carrinho');
             if (carrinho.length === 0) {
-                container.innerHTML = `<div class="carrinho-vazio"><div class="carrinho-vazio-icon">🛒</div><p>Seu carrinho está vazio</p><p style="font-size:0.85rem;margin-top:0.5rem;">Adicione produtos para continuar</p></div>`;
+                container.innerHTML = `<div class="carrinho-vazio"><div class="carrinho-vazio-icon">🛒</div><p>Seu carrinho está vazio</p><p style="font-size:0.85rem;margin-top:0.5rem;opacity:0.6">Adicione produtos para continuar</p></div>`;
             } else {
                 container.innerHTML = carrinho.map(item => `
                     <div class="item-carrinho">
@@ -426,16 +485,43 @@
             }
 
             const subtotal = calcularSubtotal();
-            const frete = freteInfo ? freteInfo.valor : 0;
-            const total = subtotal + frete;
-
             document.getElementById('subtotal').textContent = formatarPreco(subtotal);
-            document.getElementById('frete-valor').textContent = freteInfo ? formatarPreco(freteInfo.valor) : 'Não calculado';
-            document.getElementById('total-final').textContent = formatarPreco(total);
-
-            const btnWpp = document.getElementById('btn-enviar-whatsapp');
-            btnWpp.disabled = carrinho.length === 0;
+            document.getElementById('btn-confirmar-pedido').disabled = carrinho.length === 0;
         }
+
+        function irParaStep2() {
+            if (carrinho.length === 0) return;
+            const subtotal = calcularSubtotal();
+            document.getElementById('subtotal2').textContent = formatarPreco(subtotal);
+            atualizarTotalStep2();
+            document.getElementById('resumo-itens').innerHTML = carrinho.map(i =>
+                `▪ <b>${i.nome}</b> × ${i.quantidade} = ${formatarPreco(i.preco * i.quantidade)}`
+            ).join('<br>');
+            document.getElementById('step1').classList.remove('ativo');
+            document.getElementById('step2').classList.add('ativo');
+            document.getElementById('step-ind-1').classList.remove('ativo');
+            document.getElementById('step-ind-1').classList.add('concluido');
+            document.getElementById('step-ind-2').classList.add('ativo');
+            document.getElementById('carrinho-titulo-header').textContent = '📦 Frete & Entrega';
+        }
+
+        function voltarStep1() {
+            document.getElementById('step2').classList.remove('ativo');
+            document.getElementById('step1').classList.add('ativo');
+            document.getElementById('step-ind-1').classList.add('ativo');
+            document.getElementById('step-ind-1').classList.remove('concluido');
+            document.getElementById('step-ind-2').classList.remove('ativo');
+            document.getElementById('carrinho-titulo-header').textContent = '🛒 Meu Carrinho';
+        }
+
+        function atualizarTotalStep2() {
+            const subtotal = calcularSubtotal();
+            const frete = freteInfo ? freteInfo.valor : 0;
+            document.getElementById('subtotal2').textContent = formatarPreco(subtotal);
+            document.getElementById('frete-valor').textContent = freteInfo ? formatarPreco(freteInfo.valor) : '—';
+            document.getElementById('total-final').textContent = formatarPreco(subtotal + frete);
+        }
+
 
         // ===== FRETE via ViaCEP + cálculo SEDEX estimado =====
         // Nota: A API oficial dos Correios requer autenticação (SIGEP).
@@ -501,7 +587,7 @@
                     <small style="opacity:0.8">*Valor estimado. Sujeito a confirmação.</small>
                 `;
 
-                atualizarCarrinho();
+                atualizarTotalStep2();
 
             } catch (e) {
                 resultado.className = 'resultado-frete erro';
@@ -697,64 +783,108 @@ _Pedido enviado pelo site Ágape Beauty_ 💄`;
 
     <!-- CARRINHO LATERAL -->
     <div class="carrinho-lateral" id="carrinho-lateral">
+
+        <!-- HEADER -->
         <div class="carrinho-header">
-            <h2>🛒 Meu Carrinho</h2>
+            <h2 id="carrinho-titulo-header">🛒 Meu Carrinho</h2>
             <button class="btn-fechar-carrinho" onclick="fecharCarrinho()">✕</button>
         </div>
 
-        <div class="carrinho-itens" id="itens-carrinho">
-            <div class="carrinho-vazio">
-                <div class="carrinho-vazio-icon">🛒</div>
-                <p>Seu carrinho está vazio</p>
+        <!-- INDICADOR DE STEPS -->
+        <div class="steps-indicator">
+            <div class="step-item ativo" id="step-ind-1">
+                <div class="step-circulo">1</div>
+                <span>Meu Carrinho</span>
+            </div>
+            <div class="step-item" id="step-ind-2">
+                <div class="step-circulo">2</div>
+                <span>Frete & Entrega</span>
             </div>
         </div>
 
-        <!-- FRETE -->
-        <div class="carrinho-frete">
-            <div class="frete-titulo">🚚 Calcular Frete (SEDEX)</div>
-            <div class="frete-input-grupo">
-                <input type="text" id="input-cep" class="input-cep" placeholder="00000-000" maxlength="9" oninput="formatarCEP(this)">
-                <button class="btn-calcular-frete" id="btn-calcular-frete" onclick="calcularFrete()">Calcular</button>
-            </div>
-            <div id="resultado-frete"></div>
-        </div>
-
-        <!-- ENDEREÇO -->
-        <div class="carrinho-endereco">
-            <div class="endereco-titulo">📍 Endereço de Entrega</div>
-            <div class="endereco-campos">
-                <input type="text" id="end-nome" class="input-endereco" placeholder="Seu nome completo *">
-                <input type="text" id="end-rua" class="input-endereco" placeholder="Rua / Avenida *">
-                <div class="endereco-linha">
-                    <input type="text" id="end-numero" class="input-endereco" placeholder="Número *">
-                    <input type="text" id="end-complemento" class="input-endereco" placeholder="Complemento">
-                </div>
-                <input type="text" id="end-bairro" class="input-endereco" placeholder="Bairro">
-                <div class="endereco-linha">
-                    <input type="text" id="end-cidade" class="input-endereco" placeholder="Cidade">
-                    <input type="text" id="end-estado" class="input-endereco" placeholder="UF" maxlength="2">
+        <!-- ===== STEP 1: ITENS ===== -->
+        <div class="step-painel ativo" id="step1">
+            <div class="painel-itens" id="itens-carrinho">
+                <div class="carrinho-vazio">
+                    <div class="carrinho-vazio-icon">🛒</div>
+                    <p>Seu carrinho está vazio</p>
+                    <p style="font-size:0.85rem;margin-top:0.5rem;opacity:0.6">Adicione produtos para continuar</p>
                 </div>
             </div>
+            <div class="step1-footer">
+                <div class="linha-subtotal">
+                    <span>Subtotal:</span>
+                    <span id="subtotal">R$ 0,00</span>
+                </div>
+                <button class="btn-confirmar-pedido" id="btn-confirmar-pedido" onclick="irParaStep2()" disabled>
+                    Confirmar Produtos → Calcular Frete
+                </button>
+            </div>
         </div>
 
-        <!-- TOTAIS -->
-        <div class="carrinho-totais">
-            <div class="linha-total">
-                <span>Subtotal:</span>
-                <span id="subtotal">R$ 0,00</span>
+        <!-- ===== STEP 2: FRETE + ENDEREÇO ===== -->
+        <div class="step-painel" id="step2">
+            <div class="painel-frete-endereco">
+
+                <!-- RESUMO DOS ITENS -->
+                <div>
+                    <div class="bloco-titulo">🛍️ Resumo do Pedido</div>
+                    <div id="resumo-itens" style="font-size:0.85rem;color:var(--cor-texto);opacity:0.8;line-height:1.8;"></div>
+                </div>
+
+                <!-- FRETE -->
+                <div>
+                    <div class="bloco-titulo">🚚 Calcular Frete (SEDEX)</div>
+                    <div class="frete-input-grupo">
+                        <input type="text" id="input-cep" class="input-cep" placeholder="00000-000" maxlength="9" oninput="formatarCEP(this)">
+                        <button class="btn-calcular-frete" id="btn-calcular-frete" onclick="calcularFrete()">Calcular</button>
+                    </div>
+                    <div id="resultado-frete"></div>
+                </div>
+
+                <!-- ENDEREÇO -->
+                <div>
+                    <div class="bloco-titulo">📍 Endereço de Entrega</div>
+                    <div class="endereco-campos">
+                        <input type="text" id="end-nome" class="input-endereco" placeholder="Seu nome completo *">
+                        <input type="text" id="end-rua" class="input-endereco" placeholder="Rua / Avenida *">
+                        <div class="endereco-linha">
+                            <input type="text" id="end-numero" class="input-endereco" placeholder="Número *">
+                            <input type="text" id="end-complemento" class="input-endereco" placeholder="Complemento">
+                        </div>
+                        <input type="text" id="end-bairro" class="input-endereco" placeholder="Bairro">
+                        <div class="endereco-linha">
+                            <input type="text" id="end-cidade" class="input-endereco" placeholder="Cidade">
+                            <input type="text" id="end-estado" class="input-endereco" placeholder="UF" maxlength="2">
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <div class="linha-total">
-                <span>Frete SEDEX:</span>
-                <span id="frete-valor">Não calculado</span>
+
+            <!-- RODAPÉ STEP 2 -->
+            <div class="step2-footer">
+                <div class="linha-total">
+                    <span>Subtotal:</span>
+                    <span id="subtotal2">R$ 0,00</span>
+                </div>
+                <div class="linha-total">
+                    <span>Frete SEDEX:</span>
+                    <span id="frete-valor">—</span>
+                </div>
+                <div class="linha-total grande">
+                    <span>Total:</span>
+                    <span id="total-final">R$ 0,00</span>
+                </div>
+                <div class="step2-botoes">
+                    <button class="btn-voltar" onclick="voltarStep1()">← Voltar</button>
+                    <button class="btn-enviar-whatsapp" id="btn-enviar-whatsapp" onclick="enviarPedidoWhatsApp()">
+                        <span>💬</span> Enviar Pedido pelo WhatsApp
+                    </button>
+                </div>
             </div>
-            <div class="linha-total grande">
-                <span>Total:</span>
-                <span id="total-final">R$ 0,00</span>
-            </div>
-            <button class="btn-enviar-whatsapp" id="btn-enviar-whatsapp" onclick="enviarPedidoWhatsApp()" disabled>
-                <span style="font-size:1.3rem">💬</span> Finalizar Pedido via WhatsApp
-            </button>
         </div>
+
     </div>
 
     <!-- HEADER -->
@@ -852,7 +982,7 @@ _Pedido enviado pelo site Ágape Beauty_ 💄`;
             <div class="footer-section">
                 <h3>Contato</h3>
                 <p>WhatsApp: <strong>+55 85 99847-4074</strong></p>
-                <p>Email: <strong>agapebeauty@email.com</strong></p>
+                <p>Email: <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4b2a2c2a3b2e292e2a3e3f320b2e262a222765282426">[email&#160;protected]</a></strong></p>
             </div>
         </div>
         <div class="footer-bottom">
@@ -861,7 +991,4 @@ _Pedido enviado pelo site Ágape Beauty_ 💄`;
     </footer>
 
     <!-- WHATSAPP FLUTUANTE -->
-    <a href="javascript:void(0);" class="whatsapp-flutuante" onclick="abrirWhatsApp()" title="Falar no WhatsApp">💬</a>
-
-</body>
-</html>
+    <a href="ja
